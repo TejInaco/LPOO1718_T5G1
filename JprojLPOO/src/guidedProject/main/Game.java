@@ -2,10 +2,7 @@ package guidedProject.main;
 
 import java.util.Scanner;
 
-/**
- * @brief Following Java Style Guide on the following link
- * https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md 
- */
+
 
 
 public class Game {  
@@ -158,21 +155,7 @@ public class Game {
 		// guard[0] = 1 linha inicial
 		// guard[1] = 8 coluna inicia
 		
-		// Explicit initialization otherwise required a » new « statement 
-		char[][] mapa = { 
-				//index starts at 0
-				//array copy: int[] b = (int[])a.clone();
-				{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
-				{ 'X', 'H', ' ', ' ', 'I', ' ', 'X', ' ', 'G', 'X' },
-				{ 'X', 'X', 'X', ' ', 'X', 'X', 'X', ' ', ' ', 'X' },
-				{ 'X', ' ', 'I', ' ', 'I', ' ', 'X', ' ', ' ', 'X' },
-				{ 'X', 'X', 'X', ' ', 'X', 'X', 'X', ' ', ' ', 'X' },
-				{ 'I', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' },
-				{ 'I', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' },
-				{ 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', ' ', 'X' },
-				{ 'X', ' ', 'I', ' ', 'I', ' ', 'X', 'K', ' ', 'X' },
-				{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' }, };
-
+		
 		// Coordenada H - mapa[1][1]
 		int linha = 1; //linha
 		int coluna = 1; //coluna
