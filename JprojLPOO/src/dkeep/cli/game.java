@@ -11,7 +11,9 @@ public class game {
 	// static char[][] board = board1;
 
 	/**
+	 * @ main funtion
 	 * @param args
+	 * 
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
