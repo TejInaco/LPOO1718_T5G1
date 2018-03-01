@@ -15,7 +15,7 @@ Guard(tipoGuarda tipoG){
 	
 	int tmp=rand3.nextInt()%10;
 //while (gamemap.board1[])
-	col=rand3.nextInt()%10;
+	col=rand3.nextInt()%10; 
 	tipo=tipoG;
 	}
 	
