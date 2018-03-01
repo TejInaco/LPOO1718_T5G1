@@ -1,31 +1,37 @@
 package dkeep.logic;
 
-public class Lever extends gameObject{
-	static int line ;
-	static int col ;
-	static char symbol = 'k';
-	
-	static public char getSymbol() {
+public class Lever extends gameObject {
+	int line;
+	int col;
+	char symbol = 'k';
+
+	public char getSymbol() {
 		return symbol;
 	}
-	
-	static public void setSymbol(char simbolo) {
-		 symbol=simbolo;
+
+	public void setSymbol(char simbolo) {
+		symbol = simbolo;
 	}
 
-	static public int getLine() {
+	public int getLine() {
 		return line;
 	}
 
-	static public int getCol() {
+	public int getCol() {
 		return col;
 	}
 
-	static public void setLine(int linha) {
+	public void setLine(int linha) {
 		line = linha;
 	}
 
-	static public void setCol(int coluna) {
+	public void setCol(int coluna) {
 		col = coluna;
+	}
+
+	public Lever(int lin, int column, char symb) {
+		line = lin;
+		col = column;
+		symbol = symb;
 	}
 }

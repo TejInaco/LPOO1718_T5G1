@@ -1,31 +1,42 @@
 package dkeep.logic;
 
 public class Ogre extends gameObject{
-	static int line = 1;
-	static int col = 4;
-	static char symbol = 'O';
+	 int line = 1;
+	 int col = 4;
+	 char symbol = 'O';
+	 tipoOgre tipo;
+	 
+	 public enum tipoOgre {
+			NORMAL
+		}
 	
-	static public char getSymbol() {
+	 public char getSymbol() {
 		return symbol;
 	}
 	
-	static public void setSymbol(char simbolo) {
+	 public void setSymbol(char simbolo) {
 		 symbol=simbolo;
 	}
 
-	static public int getLine() {
+	 public int getLine() {
 		return line;
 	}
 
-	static public int getCol() {
+	 public int getCol() {
 		return col;
 	}
 
-	static public void setLine(int linha) {
+	 public void setLine(int linha) {
 		line = linha;
 	}
 
-	static public void setCol(int coluna) {
+	 public void setCol(int coluna) {
 			col = coluna;
 	}
+	 
+	 public Ogre(tipoOgre tipoO, int lin, int column) {
+		 tipo=tipoO;
+		 line=lin;
+		 col=column;
+	 }
 }

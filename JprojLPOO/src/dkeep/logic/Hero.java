@@ -1,31 +1,37 @@
 package dkeep.logic;
 
 public class Hero extends gameObject {
-	static int line ;
-	static int col ;
-	static char symbol = 'H';
+	int line;
+	int col;
+	char symbol = 'H';
 
-	static public char getSymbol() {
+	public char getSymbol() {
 		return symbol;
 	}
-	
-	static public void setSymbol(char simbolo) {
-		 symbol=simbolo;
+
+	public void setSymbol(char simbolo) {
+		symbol = simbolo;
 	}
 
-	static public int getLine() {
+	public int getLine() {
 		return line;
 	}
 
-	static public int getCol() {
+	public int getCol() {
 		return col;
 	}
 
-	static public void setLine(int linha) {
+	public void setLine(int linha) {
 		line = linha;
 	}
 
-	static public void setCol(int coluna) {
+	public void setCol(int coluna) {
 		col = coluna;
 	}
+
+	public Hero(int lin, int column) {
+		line = lin;
+		col = column;
+	}
+
 }

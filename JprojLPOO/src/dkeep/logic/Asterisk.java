@@ -1,32 +1,35 @@
 package dkeep.logic;
 
 public class Asterisk extends gameObject{
-	static int line ;
-	static int col ;
-	static char symbol = '*';
+	 int line ;
+	 int col ;
+	 char symbol = '*';
 	
-	static public char getSymbol() {
+public char getSymbol() {
 		return symbol;
 	}
 	
-	static public void setSymbol(char simbolo) {
+	 public void setSymbol(char simbolo) {
 		 symbol=simbolo;
 	}
 
-	static public int getLine() {
+	 public int getLine() {
 		return line;
 	}
 
-	static public int getCol() {
+	 public int getCol() {
 		return col;
 	}
 
-	static public void setLine(int linha) {
+	 public void setLine(int linha) {
 		line = linha;
 	}
 
-	static public void setCol(int coluna) {
+	 public void setCol(int coluna) {
 		col = coluna;
 	}
 
+	 Asterisk(){
+		 symbol='*';
+	 }
 }

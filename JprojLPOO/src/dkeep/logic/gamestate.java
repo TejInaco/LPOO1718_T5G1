@@ -1,6 +1,7 @@
 package dkeep.logic;
 
-
+import dkeep.logic.Guard.tipoGuarda;
+import dkeep.logic.Ogre.*;
 
 public class gamestate {
 	public static Hero heroi;
@@ -22,34 +23,30 @@ public class gamestate {
 	public static void startGame() {
 		startLevel(1);
 	}
-	
-	
-	
 
 	public static void startLevel(int nivel) {
+		Hero h1 = new Hero(1, 1);
+		Guard g1 = new Guard(tipoGuarda.ROOKIE, 1, 8);
+		Guard g2 = new Guard(tipoGuarda.DRUNKEN);
+		Guard g3 = new Guard(tipoGuarda.SUSPICIOUS);
+		Lever l1 = new Lever(8, 7, 'k');
+
 		switch (nivel) {
 
 		case 1:
 			setMap(gamemap.board1);
-			Hero.setCol(1);
-			Hero.setLine(1);
-			Guard.setLine(1);
-			Guard.setCol(8);
-			Lever.setLine(8);
-			Lever.setCol(7);
-			Lever.setSymbol('k');
 
 			break;
 
 		case 2:
 			setMap(gamemap.board2);
-			Ogre.setLine(1);
-			Ogre.setCol(4);
-			Hero.setCol(1);
-			Hero.setLine(8);
-			Lever.setCol(8);
-			Lever.setLine(1);
-			Lever.setSymbol('k');
+			Ogre o1 = new Ogre(tipoOgre.NORMAL, 1, 4);
+Asterisk a1= new Asterisk();
+			h1.setCol(1);
+			h1.setLine(8);
+			l1.setCol(8);
+			l1.setLine(1);
+			l1.setSymbol('k');
 
 			break;
 		}
