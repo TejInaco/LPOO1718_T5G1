@@ -18,10 +18,10 @@ public class game {
 
 		// Door.setDoors();
 
-		Guard g1 = new Guard()
+		//Guard g1 = new Guard();
 		
 		ArrayList<Guard> guardas;
-		guardas.add();
+	//	guardas.add();
 		
 		
 		Scanner s = new Scanner(System.in);
@@ -113,7 +113,7 @@ public class game {
 					gamestate.mapa[Asterisk.getLine()][Asterisk.getCol()] = '*';
 				}
 
-				if (isKey(Hero.getLine(), Hero.getCol())) {
+				if (isLeverNear(Hero.getLine(), Hero.getCol())) {
 					Hero.setSymbol('K');
 				}else{
 					gamestate.mapa[Lever.getLine()][Lever.getCol()] = 'k';
@@ -209,11 +209,7 @@ public class game {
 				|| (col != 0 && gamestate.mapa[line][col - 1] == 'k') || (col != 9 && gamestate.mapa[line][col + 1] == 'k'));
 	}
 
-	static boolean isKey(int line, int col) {
-		return ((line != 0 && gamestate.mapa[line - 1][col] == 'k')
-				|| (line != 9 && gamestate.mapa[line + 1][col] == 'k')
-				|| (col != 0 && gamestate.mapa[line][col - 1] == 'k') || (col != 9 && gamestate.mapa[line][col + 1] == 'k'));
-	}
+	
 
 	static boolean isGuardNear(int line, int col) {
 		return (line == Guard.getLine()
@@ -258,7 +254,7 @@ public class game {
 				gamestate.mapa[Ogre.getLine()][Ogre.getCol()] = ' ';
 				Ogre.setLine(Ogre.getLine() - 1);
 			}
-			if (isKey(Ogre.getLine() - 1, Ogre.getCol())) {
+			if (isLeverNear(Ogre.getLine() - 1, Ogre.getCol())) {
 				gamestate.mapa[Ogre.getLine()][Ogre.getCol()] = ' ';
 				Ogre.setLine(Ogre.getLine() - 1);
 				Ogre.setSymbol('$');
@@ -274,7 +270,7 @@ public class game {
 				gamestate.mapa[Ogre.getLine()][Ogre.getCol()] = ' ';
 				Ogre.setLine(Ogre.getLine() + 1);
 			}
-			if (isKey(Ogre.getLine() + 1, Ogre.getCol())) {
+			if (isLeverNear(Ogre.getLine() + 1, Ogre.getCol())) {
 				gamestate.mapa[Ogre.getLine()][Ogre.getCol()] = ' ';
 				Ogre.setLine(Ogre.getLine() + 1);
 				Ogre.setSymbol('$');
@@ -290,7 +286,7 @@ public class game {
 				gamestate.mapa[Ogre.getLine()][Ogre.getCol()] = ' ';
 				Ogre.setCol(Ogre.getCol() - 1);
 			}
-			if (isKey(Ogre.getLine(), Ogre.getCol() - 1)) {
+			if (isLeverNear(Ogre.getLine(), Ogre.getCol() - 1)) {
 				gamestate.mapa[Ogre.getLine()][Ogre.getCol()] = ' ';
 				Ogre.setLine(Ogre.getCol() - 1);
 				Ogre.setSymbol('$');
@@ -306,7 +302,7 @@ public class game {
 				gamestate.mapa[Ogre.getLine()][Ogre.getCol()] = ' ';
 				Ogre.setCol(Ogre.getCol() + 1);
 			}
-			if (isKey(Ogre.getLine(), Ogre.getCol() + 1)) {
+			if (isLeverNear(Ogre.getLine(), Ogre.getCol() + 1)) {
 				gamestate.mapa[Ogre.getLine()][Ogre.getCol()] = ' ';
 				Ogre.setLine(Ogre.getCol() + 1);
 				Ogre.setSymbol('$');
