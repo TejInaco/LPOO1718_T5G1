@@ -18,6 +18,12 @@ public class game {
 
 		// Door.setDoors();
 
+		Guard g1 = new Guard()
+		
+		ArrayList<Guard> guardas;
+		guardas.add();
+		
+		
 		Scanner s = new Scanner(System.in);
 		boolean gameover = false;
 		boolean newlevel = false;
