@@ -41,7 +41,7 @@ public class gamestate {
 		case 2:
 			setMap(gamemap.board2);
 			Ogre o1 = new Ogre(tipoOgre.NORMAL, 1, 4);
-Asterisk a1= new Asterisk();
+			Asterisk a1 = new Asterisk();
 			h1.setCol(1);
 			h1.setLine(8);
 			l1.setCol(8);
