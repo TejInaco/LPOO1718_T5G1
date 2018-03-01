@@ -9,7 +9,7 @@ public class Guard extends gameObject{
 	static int col ;
 	static char symbol ='G';
 	static tipoGuarda tipo;
-	
+	 
 	Random rand3 = new Random();
 Guard(tipoGuarda tipoG){
 	
