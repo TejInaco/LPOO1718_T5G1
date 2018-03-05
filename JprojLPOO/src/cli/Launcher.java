@@ -9,7 +9,7 @@ public class Launcher {
 		// TODO Auto-generated method stub
 
 		Game game = new Game();
-		game.setLevel();
+		game.setLevel(); 
 		game.setGuard();
 		game.setOgre();
 		game.print();
