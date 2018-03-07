@@ -9,7 +9,7 @@ public class Game {
 	boolean ended = false;
 	boolean passed = false;
 	public int level = 1;
-	Level board;
+	public Level board;
 
 	Hero hero = new Hero(1, 1);
 	Guard guard;
@@ -18,15 +18,35 @@ public class Game {
 	public Game() {
 	}
 
-	public void setLevel() {
-		switch (level) {
-		case 2:
-			board = new TakeTwo();
-			break;
-		default:
-			board = new TakeOne();
-			break;
-		}
+//	public void setLevel() {
+//		switch (level) {
+//		case 2:
+//			board = new TakeTwo();
+//			break;
+//		default:
+//			board = new TakeOne();
+//			break;
+//		}
+//	}
+	public void goNext() {
+
+		board = board.goToNext();
+
+		if (board != null) {
+			setGuard();
+			setOgre();
+			passed = false;
+			print();
+		} else
+			ended = true;
+
+}
+	
+	
+	
+	public void setLevel(Level map) {
+		board = map;
+		
 	}
 
 	public void setGuard() {
@@ -50,6 +70,29 @@ public class Game {
 		}
 	}
 
+	public void setGuard(int lin, int col) {
+
+		//Random rand = new Random();
+
+		//int random = rand.nextInt(3);
+
+	//	switch (random) {
+		//case 0:
+			guard = new Guard(lin, col, GuardType.ROOKIE);
+			//break;
+
+//		case 1:
+//			guard = new Guard(1, 8, GuardType.DRUNKEN);
+//			break;
+//
+//		default:
+//			guard = new Guard(1, 8, GuardType.SUSPICIOUS);
+//			break;
+//		}
+	}
+
+	
+	
 	// TENTAR COLOCAR EM OGRE
 	public void setOgre() {
 
@@ -326,7 +369,7 @@ public class Game {
 				}
 				// System.out.println("++");
 				level++;
-				setLevel();
+			//	setLevel();
 				passed = false;
 				print();
 			}
@@ -334,9 +377,6 @@ public class Game {
 			ended = true;
 	}
 
-	/*
-	 * Function that manages the display
-	 */
 
 	public void display() {
 		print();
@@ -346,7 +386,7 @@ public class Game {
 		else if (gameover)
 			System.out.print("GAME OVER\n");
 
-		checkLevel();
+		goNext();
 	}
 
 	/*
@@ -366,6 +406,10 @@ public class Game {
 			}
 			System.out.print("\n");
 		}
+	}
+
+	public void setHero(int lin, int col) {
+		hero = new Hero(lin, col);
 	}
 
 }

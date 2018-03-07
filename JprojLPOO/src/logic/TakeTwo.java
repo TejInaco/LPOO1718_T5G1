@@ -1,6 +1,6 @@
 package logic;
 
-public class TakeTwo implements Level {
+public class TakeTwo extends Level {
 
 //public class CrazyOgreMap implements GameMap {
 

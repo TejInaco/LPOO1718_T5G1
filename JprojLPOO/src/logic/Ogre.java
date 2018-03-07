@@ -14,6 +14,16 @@ public class Ogre extends BoardObject {
 		club.Symbol = '*';
 	}
 
+	public Ogre(int lin, int col) {
+		super(lin, col, 'O');
+	
+		this.getClub().setLine( lin - 1);
+		this.getClub().setCol(col);
+		this.getClub().setSymbol('*');
+}
+
+
+
 	public Club getClub() {
 		return club;
 	}

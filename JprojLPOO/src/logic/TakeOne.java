@@ -1,6 +1,6 @@
 package logic;
 
-public class TakeOne implements Level {
+public class TakeOne extends Level {
 
 	private char[][] map = { { 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
 			{ 'X', ' ', ' ', ' ', 'I', ' ', 'X', ' ', ' ', 'X' }, { 'X', 'X', 'X', ' ', 'X', 'X', 'X', ' ', ' ', 'X' },
@@ -44,4 +44,11 @@ public class TakeOne implements Level {
 	public char[][] getMap() {
 		return map;
 	}
+	
+	
+	public Level goToNext() {
+		Level Map = new TakeTwo();
+		return Map;
+}
+	
 }
