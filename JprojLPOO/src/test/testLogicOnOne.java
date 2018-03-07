@@ -41,7 +41,7 @@ public class testLogicOnOne {
 		assertEquals(2, Map.getHero().getLine());
 	}
 
-	@Test // confirms moving east to empty square
+	@Test // confirms moving east, south to wall and west,north to empty square
 	public void testMoveWestToEmptySquare() {
 		Level Map = new Map(map);
 		Game state = new Game();
