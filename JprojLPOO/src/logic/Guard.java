@@ -2,11 +2,13 @@ package logic;
 
 import java.util.Random;
 
+import logic.Guard.GuardType;
+
 public class Guard extends BoardObject {
-	GuardType Type;
+GuardType Type;
 	private static boolean inverted = false;
 
-	enum GuardType {
+	public enum GuardType {
 
 		ROOKIE("G"), DRUNKEN("G"), SUSPICIOUS("G");
 
@@ -22,6 +24,12 @@ public class Guard extends BoardObject {
 
 	}
 
+//	public void setGuard(int lin, int col,GuardType tipo) {
+//
+//		Guard guard = new Guard(lin, col, tipo);
+//
+//	}
+	
 	public Guard(int line, int col, GuardType type) {
 		super(line, col, 'G');
 		Type = type;

@@ -1,7 +1,7 @@
 package cli;
-import logic.Game;
-import java.util.Scanner;
 
+import java.util.Scanner;
+import logic.Game;
 
 public class Launcher {
 
@@ -9,7 +9,7 @@ public class Launcher {
 		// TODO Auto-generated method stub
 
 		Game game = new Game();
-		game.setLevel(); 
+		game.setLevel();
 		game.setGuard();
 		game.setOgre();
 		game.print();
