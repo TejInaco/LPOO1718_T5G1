@@ -7,3 +7,4 @@ public class Hero extends BoardObject {
 }
 
 }
+ 

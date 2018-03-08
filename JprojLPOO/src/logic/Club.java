@@ -8,7 +8,7 @@ char Symbol;
 	
 	
 	public Club() {
-		super();
+		super(); 
 	}
 
 	public int getLine() {

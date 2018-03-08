@@ -17,7 +17,7 @@ public class TakeTwo implements Level {
 		if (map[lin][col] == 'X' || map[lin][col] == 'I' || lin < 0 || lin >= 9 || col < 0 || col >= 9)
 			return false;
 		else
-			return true;
+			return true; 
 	}
 
 	public boolean gotKey(int lin, int col) {

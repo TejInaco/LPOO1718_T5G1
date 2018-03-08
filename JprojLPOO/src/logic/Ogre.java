@@ -11,7 +11,7 @@ public class Ogre extends BoardObject {
 		club = new Club();
 		club.Line = 3;
 		club.Col = 1;
-		club.Symbol = '*';
+		club.Symbol = '*'; 
 	}
 
 	public Club getClub() {

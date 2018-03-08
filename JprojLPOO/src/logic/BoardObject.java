@@ -3,7 +3,7 @@ package logic;
 public class BoardObject {
 	protected int Line;
 	protected int Col;
-	protected char Symbol;
+	protected char Symbol; 
 
 	public BoardObject(int lin, int column, char symbol) {
 		Line = lin;
