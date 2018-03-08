@@ -17,7 +17,19 @@ public class Game {
 
 	public Game() {
 	}
-
+	
+	public Level getBoard() {
+		return this.board;
+	}
+	public Hero getHero() {
+		return this.hero;
+	}
+	public int getLevelint() {
+		return this.level;
+	}
+	public boolean getPassed() {
+		return this.passed;
+	}
 	public void setLevel() {
 		switch (level) {
 		case 2:

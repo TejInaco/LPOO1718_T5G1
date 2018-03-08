@@ -44,4 +44,7 @@ public class TakeOne implements Level {
 	public char[][] getMap() {
 		return map;
 	}
+	public void setMap1(char[][] mp) {
+		this.map = mp;
+	}
 }

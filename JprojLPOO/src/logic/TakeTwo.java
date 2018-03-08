@@ -43,5 +43,9 @@ public class TakeTwo implements Level {
 	
 	public char[][] getMap() {
 		return map;
-}
+	}
+	
+//	public void setMap(char [][] mp) {
+//			this.map = mp;
+//	}
 }

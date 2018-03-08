@@ -10,4 +10,5 @@ public interface Level {
 	public boolean foundDoor(int x, int y);
 
 	public char[][] getMap();
+	public void setMap1(char[][] mp);
 }
