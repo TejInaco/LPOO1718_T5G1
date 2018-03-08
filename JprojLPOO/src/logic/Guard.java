@@ -27,13 +27,6 @@ public class Guard extends BoardObject {
 		Type = type;
 	}
 
-	public Guard(int lin, int col) {
-		super(lin, col, 'G');
-}
-
-	
-	
-	
 	public void move() {
 		switch (Type) {
 
