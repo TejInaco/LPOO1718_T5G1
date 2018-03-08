@@ -1,5 +1,5 @@
 package logic;
- 
+
 import java.util.Random;
 
 import logic.Guard.GuardType;
@@ -27,6 +27,14 @@ public class Game {
 			board = new TakeOne();
 			break;
 		}
+	}
+
+	
+
+	public Game(int ogres, Object tipo) {
+		
+		this.guard = new Guard(1,8,(GuardType) tipo);
+		this.ogres = new Ogre[ogres];
 	}
 
 	public void setGuard() {
@@ -107,38 +115,36 @@ public class Game {
 
 	public void CastClub(Ogre ogre) {
 
-		
+		while (true) {
 
-			while (true) {
+			int newLine = ogre.getLine();
+			int newCol = ogre.getCol();
 
-				int newLine = ogre.getLine();
-				int newCol = ogre.getCol();
+			Random random = new Random();
 
-				Random random = new Random();
+			int dir = 2 * (1 + random.nextInt(4));
 
-				int dir = 2 * (1 + random.nextInt(4));
+			switch (dir) {
+			case 8:
+				newLine++;
+				break;
+			case 6:
+				newLine--;
+				break;
+			case 2:
+				newCol++;
+				break;
+			case 4:
+				newCol--;
+				break;
+			}
 
-				switch (dir) {
-				case 8:
-					newLine++;
-					break;
-				case 6:
-					newLine--;
-					break;
-				case 2:
-					newCol++;
-					break;
-				case 4:
-					newCol--;
-					break;
-				}
+			if (board.isEmpty(newLine, newCol)) {
+				ogre.getClub().setLine(newLine);
+				ogre.getClub().setCol(newCol);
+				break;
+			}
 
-				if (board.isEmpty(newLine, newCol)) {
-					ogre.getClub().setLine(newLine);
-					ogre.getClub().setCol(newCol);
-					break;
-				}
-			
 		}
 	}
 
@@ -161,13 +167,13 @@ public class Game {
 			break;
 		}
 
-		if ( board.isEmpty(newLine, newCol)) {
+		if (board.isEmpty(newLine, newCol)) {
 			hero.setLine(newLine);
 			hero.setCol(newCol);
 		}
 
 		validateRules();
-		
+
 	}
 
 	public void validateRules() {
@@ -188,50 +194,49 @@ public class Game {
 		}
 
 		if (level == 2) {
-	
+
 			for (int i = 0; i < ogres.length; i++) {
-			
+
 				if (!ogres[i].getStun())
 					move(ogres[i]);
 				else
 					ogres[i].incStunCounter();
-			
+
 				CastClub(ogres[i]);
-			
-		
+
 			}
-	
+
 			if (board.gotKey(hero.getLine(), hero.getCol())) {
 				board.openDoors();
 				hero.setSymbol('K');
 			}
-			
+
 			for (int i = 0; i < ogres.length; i++) {
-			
+
 				if (ogres[i].collision(hero.getLine(), hero.getCol()))
 					gameover = true;
-				
+
 				if (ogres[i].stun(hero.getLine(), hero.getCol())) {
 					ogres[i].setSymbol('8');
 					ogres[i].setStun();
 				}
-				
+
 				if (board.gotKey(ogres[i].getCol(), ogres[i].getLine()))
 					ogres[i].setSymbol('$');
 				else if (!ogres[i].getStun())
 					ogres[i].setSymbol('O');
-		
+
 				if (board.gotKey(ogres[i].getClub().getCol(), ogres[i].getClub().getLine()))
 					ogres[i].getClub().setSymbol('$');
 				else
 					ogres[i].getClub().setSymbol('*');
-			
+
 			}
-			
+
 			if (board.foundDoor(hero.getLine(), hero.getCol()))
 				ended = true;
 		}
-	
+
 	}
 
 	// public void OLDprint() {
@@ -359,7 +364,7 @@ public class Game {
 
 	public void print() {
 		System.out.println();
-		for (int i = 0; i < board.getMap().length ; i++) {
+		for (int i = 0; i < board.getMap().length; i++) {
 			for (int j = 0; j < board.getMap().length; j++) {
 				if (!update(i, j))
 					System.out.print(board.getMap()[i][j] + " ");
