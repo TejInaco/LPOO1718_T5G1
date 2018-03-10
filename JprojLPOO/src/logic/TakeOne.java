@@ -15,7 +15,7 @@ public class TakeOne implements Level {
 	public boolean isEmpty(int lin, int col) {
 		if (map[lin][col] == 'X' || map[lin][col] == 'I' || lin < 0 || lin >= 10 || col < 0 || col >= 10)
 			return false;
-		else
+		else 
 			return true;
 	}
 

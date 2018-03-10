@@ -1,6 +1,6 @@
 package logic;
 
-import java.util.Random;
+import java.util.Random; 
 
 import logic.Guard.GuardType;
 

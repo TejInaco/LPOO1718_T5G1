@@ -11,7 +11,7 @@ GuardType Type;
 	public enum GuardType {
 
 		ROOKIE("G"), DRUNKEN("G"), SUSPICIOUS("G");
-
+ 
 		private String custom;
 
 		private GuardType(String custom) {

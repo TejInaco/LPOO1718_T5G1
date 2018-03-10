@@ -8,7 +8,7 @@
 //	public Map(char[][] map) {
 //
 //		this.map = new char[map.length][map[0].length];
-//		ogres = new ArrayList<Ogre>();
+//		ogres = new ArrayList<Ogre>(); 
 //		
 //		for (int i = 0; i < map.length; i++) {
 //			for (int j = 0; j < map[0].length; j++) {

@@ -1,3 +1,4 @@
+package gui;
 import java.awt.EventQueue;
 import logic.*;
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 public class GameWindow {
-
+ 
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
