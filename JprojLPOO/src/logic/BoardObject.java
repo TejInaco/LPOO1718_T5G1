@@ -1,37 +1,37 @@
 package logic;
 
 public class BoardObject {
-	protected int Line;
-	protected int Col;
-	protected char Symbol; 
+	protected int line;
+	protected int col;
+	protected char symbol; 
 
-	public BoardObject(int lin, int column, char symbol) {
-		Line = lin;
-		Col = column;
-		Symbol = symbol;
+	public BoardObject(int lin, int column, char symb) {
+		line = lin;
+		col = column;
+		symbol = symb;
 	}
 
 	public int getLine() {
-		return Line;
+		return this.line;
 	}
 
 	public int getCol() {
-		return Col;
+		return this.col;
 	}
 
 	public char getSymbol() {
-		return Symbol;
+		return this.symbol;
 	}
 
-	public void setLine(int Line) {
-		this.Line = Line;
+	public void setLine(int lne) {
+		this.line = lne;
 	}
 
-	public void setCol(int Col) {
-		this.Col = Col;
+	public void setCol(int cl) {
+		this.col = cl;
 	}
 
-	public void setSymbol(char symbol) {
-		Symbol = symbol;
+	public void setSymbol(char symbl) {
+		this.symbol = symbl;
 }
 }

@@ -5,8 +5,8 @@ import java.util.Random;
 import logic.Guard.GuardType;
 
 public class Guard extends BoardObject {
-GuardType Type;
-	private static boolean inverted = false;
+	GuardType Type;
+	private boolean inverted = false;
 
 	public enum GuardType {
 
@@ -29,6 +29,10 @@ GuardType Type;
 //		Guard guard = new Guard(lin, col, tipo);
 //
 //	}
+	public Guard(int nmb, int nmb1, char g) {
+		super(nmb, nmb1, g);
+		this.Type = GuardType.ROOKIE;
+	}
 	
 	public Guard(int line, int col, GuardType type) {
 		super(line, col, 'G');
@@ -80,25 +84,25 @@ GuardType Type;
 	}
 
 	public void route() {
-		int newlin = Line;
-		int newcol = Col;
+		int newlin = this.line;
+		int newcol = this.col;
 
 		// inverted route
 		if (inverted) {
-			if (Line == 6) {
-				if (Col != 1) {
+			if (this.line == 6) {
+				if (this.col != 1) {
 					newcol--;
 				} else {
 					newlin--;
 				}
-			} else if (Col == 7) {
-				if (Line != 1) {
+			} else if (this.col == 7) {
+				if (this.line != 1) {
 					newlin--;
 				} else {
 					newcol++;
 				}
 
-			} else if (Col == 8) {
+			} else if (this.col == 8) {
 				newlin++;
 			} else {
 				newcol++;
@@ -126,44 +130,44 @@ GuardType Type;
 			// newcol--;
 			// }
 
-			switch (Col) {
+			switch (this.col) {
 
 			case 1:// desce a nao ser que linha 6 ->
-				if (Line != 6) {
+				if (this.line != 6) {
 					newlin++;
 				} else {
 					newcol++;
 				}
 				break;
 			case 7:// desce a nao ser que linha 5 <-
-				if (Line != 5 && Line != 6) {
+				if (this.line != 5 && this.line != 6) {
 					newlin++;
-				} else if (Line == 5) {
+				} else if (this.line == 5) {
 					newcol--;
-				} else if (Line == 6) {
+				} else if (this.line == 6) {
 					newcol++;
 				}
 				break;
 			case 8: // sobe a nao ser que linha 1 <-
-				if (Line != 1 && Line != 6) {
+				if (this.line != 1 && this.line != 6) {
 					newlin--;
-				} else if (Line == 1) {
+				} else if (this.line == 1) {
 					newcol--;
-				} else if (Line == 6) {
+				} else if (this.line == 6) {
 					newlin--;
 				}
 				break;
 			default:// ver linhas
-				switch (Line) {
+				switch (this.line) {
 				case 5: // esquerda a nao ser que coluna 1 que desce
-					if (Col != 1) {
+					if (this.col != 1) {
 						newcol--;
 					} else {// desce
 						newlin++;
 					}
 					break;
 				case 6: // direita a nao ser que coluna 8 que sobe
-					if (Col != 8) {
+					if (this.col != 8) {
 						newcol++;
 					} else {// sobe
 						newlin--;
@@ -173,8 +177,8 @@ GuardType Type;
 				break;
 			}
 		}
-		Col = newcol;
-		Line = newlin;
+		this.col = newcol;
+		this.line = newlin;
 
 	}
 

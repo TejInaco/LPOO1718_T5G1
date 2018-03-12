@@ -1,57 +1,57 @@
 package logic;
 
 public class Ogre extends BoardObject {
+	
 	private Club club;
-
 	private boolean stun = false;
 	private int stunCounter = 0;
 
 	public Ogre() {
 		super(4, 1, 'O');
 		club = new Club();
-		club.Line = 3;
-		club.Col = 1;
-		club.Symbol = '*'; 
+		this.club.line = 3;
+		this.club.col = 1;
+		this.club.symbol = '*'; 
 	}
 
 	public Club getClub() {
-		return club;
+		return this.club;
 	}
 
 	
 
 	public boolean getStun() {
-		return stun;
+		return this.stun;
 	}
 
 	public void setStun() {
-		stun = true;
+		this.stun = true;
 	}
 
 	public int getStunCounter() {
-		return stunCounter;
+		return this.stunCounter;
 	}
 
 	public void incStunCounter() {
-		stunCounter++;
+		this.stunCounter++;
 
-		if (stunCounter == 3) {
-			stun = false;
-			stunCounter = 0;
+		if (this.stunCounter == 3) {
+			this.stun = false;
+			this.stunCounter = 0;
 		}
 	}
 
 	public boolean stun(int line, int col) {
 
 		// caso esteja na mesma coluna que O
-		if (Line ==line) {
-			if (Col==col - 1 || Col==col + 1)
+		if (this.line ==line) {
+			if (this.col==col - 1 || this.col==col + 1)
 				return true;
 		}
 
 		// caso esteja na mesma linha que O
-		if (Col==col) {
-			if (Line ==line - 1 || Line ==line + 1)
+		if (this.col==col) {
+			if (this.line ==line - 1 || this.line ==line + 1)
 				return true;
 		}
 

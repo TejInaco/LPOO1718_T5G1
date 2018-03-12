@@ -1,9 +1,9 @@
 package logic;
 
 public class Club {
-int Col;
-int Line;
-char Symbol;
+int col;
+int line;
+char symbol;
 	
 	
 	
@@ -12,27 +12,27 @@ char Symbol;
 	}
 
 	public int getLine() {
-		return Line;
+		return this.line;
 	}
 
 	public int getCol() {
-		return Col;
+		return this.col;
 	}
 
 	public void setLine(int lin) {
-		Line = lin;
+		this.line = lin;
 	}
 
 	public void setCol(int col) {
-		Col = col;
+		this.col = col;
 	}
 
 	public void setSymbol(char symbol) {
-		Symbol = symbol;
+		this.symbol = symbol;
 	}
 
 	public char getSymbol() {
-		return Symbol;
+		return this.symbol;
 	}
 
 }

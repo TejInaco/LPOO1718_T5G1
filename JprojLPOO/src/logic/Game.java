@@ -5,17 +5,22 @@ import java.util.Random;
 import logic.Guard.GuardType;
 
 public class Game {
-	public boolean gameover = false;
-	boolean ended = false;
-	boolean passed = false;
-	public int level = 1;
+	public boolean gameover;
+	public boolean ended;
+	public boolean passed;
+	public int level;
 	Level board;
 
-	Hero hero = new Hero(1, 1);
+	Hero hero;
 	Guard guard;
 	Ogre ogres[];
 
 	public Game() {
+		this.gameover = false;
+		this.ended = false;
+		this.passed = false;
+		this.level = 1;
+		this.hero = new Hero(1, 1); 
 	}
 	
 	public Level getBoard() {
@@ -30,18 +35,35 @@ public class Game {
 	public boolean getPassed() {
 		return this.passed;
 	}
+	public Level getLevelObj() {
+		return this.board;
+	}
+	public boolean getGameOver() {
+		return this.gameover;
+	}
+	public Guard getGuard() {
+		return this.guard;
+	}
+	public void setLevel(char[][] lvl) {
+		 this.board = new Level(lvl);
+	}
 	public void setLevel() {
 		switch (level) {
 		case 2:
-			board = new TakeTwo();
+			board = new Level(2);
 			break;
 		default:
-			board = new TakeOne();
+			board = new Level(1);
 			break;
 		}
 	}
+	public void setLevelObjec(Level toty) {
+		this.board = toty;
+	}
+	public void setGuard(Guard grd) {
+		this.guard = grd;
+	}
 
-	
 
 	public Game(int ogres, Object tipo) {
 		

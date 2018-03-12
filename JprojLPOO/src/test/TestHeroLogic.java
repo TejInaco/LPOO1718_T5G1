@@ -21,7 +21,7 @@ import logic.*;
  */
 public class TestHeroLogic {
 
-	char[][] map = {
+	protected char[][] mapTest = {
 			{'X','X','X','X','X','X'},
 			{'X','H',' ',' ','G','X'},
 			{'I',' ',' ',' ',' ','X'},
@@ -31,26 +31,55 @@ public class TestHeroLogic {
 	@Test
 	public void testMoveHeroIntoCell() {
 		Game jogo = new Game();
-		jogo.getBoard().setMap1(map);
-		assertEquals(0, jogo.getHero().getLine());
-//		assertEquals(1, jogo.getHero().getCol());
-//		jogo.move(2);
-//		assertEquals(2, jogo.getHero().getLine());
-//		assertEquals(1, jogo.getHero().getLine());
-//		Game gameMap = new GameMap(map);
-//		Game game = new Game(gameMap);
-//		Game game = new Game(gameMap);
-//		assertEquals(new CellPosition(2,1), game.getHeroPosition());
+		//Level levelTest = new Level(mapTest);
+		jogo.setLevel(mapTest);
+		//Posicao inicial
+		assertEquals(1, jogo.getHero().getLine());
+		assertEquals(1, jogo.getHero().getCol());
+		//Movimento
+		Guard grd = new Guard(1,4,'G');
+		jogo.setGuard(grd);
+		jogo.move(2); //para cima
+		assertEquals(2, jogo.getHero().getLine());
+		assertEquals(1, jogo.getHero().getCol());
+		jogo.move(4); // para a esquerda
+		assertEquals(2,jogo.getHero().getLine());
+		assertEquals(1,jogo.getHero().getCol());
+		jogo.move(8); // para cima
+		assertEquals(1,jogo.getHero().getLine());
+		assertEquals(1,jogo.getHero().getCol());
+		jogo.move(6); // para a direita
+		assertEquals(1,jogo.getHero().getLine());
+		assertEquals(2,jogo.getHero().getCol());
+		
 	}
-/*
+
 	@Test
 	public void testMoveHeroIntoWallUns() {	
+		Game jogo = new Game();
+		Level levelTest = new Level(mapTest);
+		jogo.setLevel(mapTest);
+		Guard grd = new Guard(1,4,'G');
+		jogo.setGuard(grd);
+		jogo.move(8); //para cima
+		assertEquals(1, jogo.getHero().getLine());
+		assertEquals(1, jogo.getHero().getCol());
 		
 	}
+
 	@Test
 	public void testMoveHeroIntoAjdGuardDefeat() {
-		
+		Game jogo = new Game();
+		Level levelTest = new Level(mapTest);
+		jogo.setLevel(mapTest);
+		Guard grd = new Guard(1,4,'G');
+		jogo.setGuard(grd);
+		jogo.getGuard().setLine(1);
+		jogo.getGuard().setCol(3);
+		jogo.move(6);
+		assertTrue(jogo.getGameOver());
 	}
+/*
 	@Test
 	public void testMoveHeroIntoClosedDoors() {
 		
