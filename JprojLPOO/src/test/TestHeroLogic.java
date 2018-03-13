@@ -79,18 +79,42 @@ public class TestHeroLogic {
 		jogo.move(6);
 		assertTrue(jogo.getGameOver());
 	}
-/*
+
 	@Test
 	public void testMoveHeroIntoClosedDoors() {
-		
+		Game jogo = new Game();
+		Level levelTest = new Level(mapTest);
+		jogo.setLevel(mapTest);
+		Guard grd = new Guard(1,4,'G');
+		jogo.setGuard(grd);
+		jogo.move(2);
+		jogo.move(4);
+		assertFalse(jogo.getPassed());
 	}
+	
 	@Test
 	public void testMoveHeroIntoLeverCeelDoorsOpen() {
-		
+		Game jogo = new Game();
+		Level levelTest = new Level(mapTest);
+		jogo.setLevel(mapTest);
+		Guard grd = new Guard(1,4,'G');
+		jogo.setGuard(grd);
+		jogo.move(2);
+		jogo.move(2);
+		assertTrue(jogo.getLevelObj().getisDoorsOpen());
 	}
+	
 	@Test
 	public void testMoveHeroIntoOpenDoors() {
-		
+		Game jogo = new Game();
+		Level levelTest = new Level(mapTest);
+		jogo.setLevel(mapTest);
+		Guard grd = new Guard(1,4,'G');
+		jogo.setGuard(grd);
+		jogo.move(2);
+		jogo.move(2);
+		jogo.move(4);
+		assertTrue(jogo.getPassed());
 	}
-	*/
+
 }
