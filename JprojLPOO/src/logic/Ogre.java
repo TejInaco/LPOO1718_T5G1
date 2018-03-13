@@ -8,30 +8,26 @@ public class Ogre extends BoardObject {
 
 	public Ogre() {
 		super(4, 1, 'O');
-		club = new Club();
-		this.club.line = 3;
-		this.club.col = 1;
-		this.club.symbol = '*'; 
+		club = new Club(3,1); 
+	}
+	public Ogre(int lnh, int cln) {
+		super(lnh,cln);
+		club = new Club(3,1);
 	}
 
 	public Club getClub() {
 		return this.club;
 	}
-
-	
-
 	public boolean getStun() {
 		return this.stun;
 	}
-
-	public void setStun() {
-		this.stun = true;
-	}
-
 	public int getStunCounter() {
 		return this.stunCounter;
 	}
-
+	public void setStun() {
+		this.stun = true;
+	}
+	
 	public void incStunCounter() {
 		this.stunCounter++;
 

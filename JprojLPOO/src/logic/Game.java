@@ -14,13 +14,20 @@ public class Game {
 	Hero hero;
 	Guard guard;
 	Ogre ogres[];
+	Ogre crazyOgre;
 
 	public Game() {
 		this.gameover = false;
 		this.ended = false;
 		this.passed = false;
 		this.level = 1;
-		this.hero = new Hero(1, 1); 
+		this.hero = new Hero(1, 1);
+		this.crazyOgre = new Ogre();
+	}
+	public Game(int ogres, Object tipo) {
+		
+		this.guard = new Guard(1,8,(GuardType) tipo);
+		this.ogres = new Ogre[ogres];
 	}
 	
 	public Level getBoard() {
@@ -43,34 +50,48 @@ public class Game {
 	}
 	public Guard getGuard() {
 		return this.guard;
+	} 
+	public Ogre getCrazyOgre() {
+		return this.crazyOgre;
 	}
+	public void setCrazyOgre(Ogre m) {
+		this.crazyOgre  = m;
+	}
+	
 	public void setLevel(char[][] lvl) {
 		 this.board = new Level(lvl);
 	}
 	public void setLevel() {
-		switch (level) {
+		switch (this.level) {
+		case 4:
+			this.board = new Level(4);
+			break;
+		case 3:
+			this.board = new Level(3);
+			break;
 		case 2:
-			board = new Level(2);
+			this.board = new Level(2);
 			break;
 		default:
-			board = new Level(1);
+			this.board = new Level(1);
 			break;
 		}
 	}
 	public void setLevelObjec(Level toty) {
 		this.board = toty;
 	}
+	public void setLevelInt(int nmb) {
+		this.level = nmb;
+	}
 	public void setGuard(Guard grd) {
 		this.guard = grd;
 	}
 
-
-	public Game(int ogres, Object tipo) {
+	public void setGameOver() {
+		this.gameover = true;
 		
-		this.guard = new Guard(1,8,(GuardType) tipo);
-		this.ogres = new Ogre[ogres];
 	}
-
+	
 	public void setGuard() {
 
 		Random rand = new Random();
@@ -157,7 +178,7 @@ public class Game {
 			Random random = new Random();
 
 			int dir = 2 * (1 + random.nextInt(4));
-
+			
 			switch (dir) {
 			case 8:
 				newLine++;
@@ -212,22 +233,76 @@ public class Game {
 
 	public void validateRules() {
 
-		if (level == 1) {
+		if (this.level == 1) {  //heroi e um guarda apenas
 
-			guard.move();
+			this.guard.move();
 
-			if (board.gotKey(hero.getLine(), hero.getCol()))
-				board.openDoors();
+			if (this.board.gotKey(this.hero.getLine(), this.hero.getCol()))
+				this.board.openDoors();
 
-			if (guard.collision(hero.getLine(), hero.getCol()))
-				gameover = true;
+			if (this.guard.collision(this.hero.getLine(), this.hero.getCol()))
+				this.gameover = true;
 
-			if (board.foundDoor(hero.getLine(), hero.getCol()))
+			if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
+				this.passed = true;
+		}
+//////////		
+		if (this.level == 2) {//heroi e um ogre com club
+	
+			if (this.getCrazyOgre().getStun()) {
+					move(this.getCrazyOgre());
+			}else{
+				this.getCrazyOgre().incStunCounter();
+			}
+			
+			CastClub(this.getCrazyOgre());
+			
+			//check if hero tem a chave
+			if (this.board.gotKey(this.hero.getLine(), this.hero.getCol())) {
+				this.board.openDoors();
+				this.hero.setSymbol('K');
+			}
+			//
+			
+			if (this.getCrazyOgre().collision(this.hero.getLine(), this.hero.getCol()))
+					this.setGameOver();
 
-				passed = true;
+			if (this.crazyOgre.stun(this.hero.getLine(), this.hero.getCol())) {
+				this.crazyOgre.setSymbol('8');
+				this.crazyOgre.setStun();
+			}
+			
+			if (this.board.gotKey(this.crazyOgre.getCol(), this.crazyOgre.getLine())) {
+				this.crazyOgre.setSymbol('$');
+			}else if (!this.crazyOgre.getStun()) {
+				this.crazyOgre.setSymbol('O');
+			}
+
+			if (this.board.gotKey(this.crazyOgre.getClub().getCol(), this.crazyOgre.getClub().getLine()))
+				this.crazyOgre.getClub().setSymbol('$');
+			else
+				this.crazyOgre.getClub().setSymbol('*');
+
+			
+			if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
+				this.ended = true;
 		}
 
-		if (level == 2) {
+		if (this.level == 3) {// heroi e 3 guardas
+			//TODO rever o codigo para os 3 guardas
+			this.guard.move();
+
+			if (this.board.gotKey(this.hero.getLine(), this.hero.getCol()))
+				this.board.openDoors();
+
+			if (this.guard.collision(this.hero.getLine(), this.hero.getCol()))
+				this.setGameOver();
+
+			if (board.foundDoor(hero.getLine(), hero.getCol()))
+				passed = true;
+
+		}
+		if (this.level == 4) {//heroi e muitos Ogres
 
 			for (int i = 0; i < ogres.length; i++) {
 
@@ -307,54 +382,49 @@ public class Game {
 	// }
 
 	public boolean update(int lin, int col) {
-
-		if (level == 1) {
-
-			// hero
-			if (hero.getCol() == col && hero.getLine() == lin) {
-				System.out.print(hero.getSymbol() + " ");
+		if (this.hero.getCol() == col && this.hero.getLine() == lin) {
+			System.out.print(this.hero.getSymbol() + " ");
+			return true;
+		}
+//GUARD
+		if ( this.level == 1 || this.level == 3 ) {
+			if (this.guard.getCol() == col && this.guard.getLine() == lin) {
+				System.out.print(this.guard.getSymbol() + " ");
 				return true;
 			}
 
-			// guard
-			if (guard.getCol() == col && guard.getLine() == lin) {
-				System.out.print(guard.getSymbol() + " ");
+		} 
+//OGRE (1)
+		if( this.level == 2 ) {
+			if (this.crazyOgre.getCol() == col && this.crazyOgre.getLine() == lin) {
+				System.out.print(this.crazyOgre.getSymbol() + " ");
 				return true;
 			}
+		}
+//OGRE(3)		
+		if( this.level == 4 ){
+			
+			for (int i = 0; i < this.ogres.length; i++) {
 
-		} else {
-
-			// hero
-			if (hero.getCol() == col && hero.getLine() == lin) {
-				System.out.print(hero.getSymbol() + " ");
-				return true;
-			}
-
-			// ogre and club
-			for (int i = 0; i < ogres.length; i++) {
-
-				if (ogres[i].getCol() == col && ogres[i].getLine() == lin) {
-					System.out.print(ogres[i].getSymbol() + " ");
+				if (this.ogres[i].getCol() == col && this.ogres[i].getLine() == lin) {
+					System.out.print(this.ogres[i].getSymbol() + " ");
 					return true;
 				}
 
-				if (ogres[i].getClub().getCol() == col && ogres[i].getClub().getLine() == lin) {
-					System.out.print(ogres[i].getClub().getSymbol() + " ");
+				if (this.ogres[i].getClub().getCol() == col && this.ogres[i].getClub().getLine() == lin) {
+					System.out.print(this.ogres[i].getClub().getSymbol() + " ");
 					return true;
 				}
 			}
 		}
-
 		return false;
 	}
 
 	public void checkLevel() {
-		// System.out.print("level");
-		// System.out.println(level);
-		// System.out.println(passed);
-		if (level < 2) {
+		
+		if ( this.level == 1 ) {
 			// System.out.println("<2");
-			if (passed) {
+			if (this.passed) {
 				// System.out.println("passed");
 
 				if (level == 1) {
@@ -370,7 +440,8 @@ public class Game {
 				print();
 			}
 		} else if (passed)
-			ended = true;
+			this.ended = true;
+	
 	}
 
 	/*
@@ -380,28 +451,25 @@ public class Game {
 	public void display() {
 		print();
 
-		if (ended)
+		if (this.ended)
 			System.out.print("PLAYER ONE WINS");
-		else if (gameover)
+		else if (this.gameover)
 			System.out.print("GAME OVER\n");
 
 		checkLevel();
 	}
 
-	/*
-	 * Function that prints the characters
-	 */
-
+	
 	/*
 	 * Function that prints the current map
 	 */
 
 	public void print() {
 		System.out.println();
-		for (int i = 0; i < board.getMap().length; i++) {
-			for (int j = 0; j < board.getMap().length; j++) {
+		for (int i = 0; i < this.board.getMap().length; i++) {
+			for (int j = 0; j < this.board.getMap().length; j++) {
 				if (!update(i, j))
-					System.out.print(board.getMap()[i][j] + " ");
+					System.out.print(this.board.getMap()[i][j] + " ");
 			}
 			System.out.print("\n");
 		}

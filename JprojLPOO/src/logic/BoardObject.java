@@ -10,6 +10,10 @@ public class BoardObject {
 		col = column;
 		symbol = symb;
 	}
+	public BoardObject(int lin, int column) {
+		line = lin;
+		col = column;
+	}
 
 	public int getLine() {
 		return this.line;
