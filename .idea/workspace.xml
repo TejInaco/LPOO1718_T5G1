@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe303686-cc70-43ba-9458-0ee0961c2b6c" name="Default" comment="1st commit 2 branch (dependencies)">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="fe303686-cc70-43ba-9458-0ee0961c2b6c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/JprojLPOO/.classpath" afterPath="$PROJECT_DIR$/JprojLPOO/.classpath" />
-      <change beforePath="$PROJECT_DIR$/JprojLPOO/JprojLPOO.eml" afterPath="$PROJECT_DIR$/JprojLPOO/JprojLPOO.eml" />
-      <change beforePath="$PROJECT_DIR$/JprojLPOO/src/cli/Launcher.java" afterPath="$PROJECT_DIR$/JprojLPOO/src/cli/Launcher.java" />
-      <change beforePath="$PROJECT_DIR$/JprojLPOO/src/logic/Game.java" afterPath="$PROJECT_DIR$/JprojLPOO/src/logic/Game.java" />
-      <change beforePath="$PROJECT_DIR$/JprojLPOO/src/test/TestHeroLogic.java" afterPath="$PROJECT_DIR$/JprojLPOO/src/test/TestHeroLogic.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/JprojLPOO/bin/" />
@@ -506,8 +500,16 @@
       <updated>1520727211679</updated>
       <workItem from="1521108648820" duration="4201000" />
       <workItem from="1521113135805" duration="1185000" />
-      <workItem from="1521114498119" duration="743000" />
+      <workItem from="1521114498119" duration="1117000" />
     </task>
+    <task id="LOCAL-00001" summary="1st commit 2 branch (dependencies)">
+      <created>1521115309345</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1521115309346</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -543,14 +545,15 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6129000" />
+    <option name="totallyTimeSpent" value="6503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="16" width="1368" height="780" extended-state="6" />
     <layout>
+      <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32882884" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25525525" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25525525" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
