@@ -1,7 +1,8 @@
 package cli;
 
-import java.util.Scanner;
 import logic.Game;
+
+import java.util.Scanner;
  
 public class Launcher { 
 
@@ -12,7 +13,7 @@ public class Launcher {
 		game.setLevel();
 		game.setGuard();
 		game.setOgre();
-		game.print();
+		//game.print();
 		Scanner s = new Scanner(System.in);
 		while (!game.gameover) {
 			game.print();

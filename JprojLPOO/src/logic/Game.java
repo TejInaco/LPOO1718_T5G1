@@ -1,8 +1,8 @@
 package logic;
 
-import java.util.Random; 
-
 import logic.Guard.GuardType;
+
+import java.util.Random;
 
 public class Game {
 	public boolean gameover;
