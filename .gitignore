@@ -10,3 +10,5 @@ out/
 *.eml
 *.classpath
 *.project
+
+*.xml
