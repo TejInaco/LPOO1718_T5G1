@@ -457,12 +457,15 @@ public class Game {
 	public void display() {
 		print();
 
-		if (this.ended)
+		if (this.ended) {
 			System.out.print("PLAYER ONE WINS");
-		else if (this.gameover)
+			System.exit(0);
+		}else if (this.gameover) {
 			System.out.print("GAME OVER\n");
-
+			System.exit(0);
+		}
 		checkLevel();
+	
 	}
 
 	

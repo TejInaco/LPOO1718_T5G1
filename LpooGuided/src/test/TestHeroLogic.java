@@ -53,7 +53,7 @@ public class TestHeroLogic {
 		assertEquals(1,jogo.getHero().getLine());
 		assertEquals(1,jogo.getHero().getCol());
 	}
-
+ 
 	@Test
 	public void testMoveHeroIntoWallUns() {	
 		Game jogo = new Game();
