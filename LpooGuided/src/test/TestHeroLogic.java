@@ -34,7 +34,7 @@ public class TestHeroLogic {
 		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		//Posicao inicial
-		
+		 
 		assertEquals(1, jogo.getHero().getLine());
 		assertEquals(1, jogo.getHero().getCol());
 		//Movimento

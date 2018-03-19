@@ -118,7 +118,7 @@ public class GameWindow {
 		gbc_comboBox.gridy = 1;
 		frame.getContentPane().add(comboBox, gbc_comboBox);
 		
-		textArea = new JTextArea();
+		textArea = new JTextArea(); 
 		textArea.setFont(new Font("Courier New", Font.BOLD, 15));
 		textArea.setEditable(false);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();

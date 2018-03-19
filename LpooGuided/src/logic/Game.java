@@ -458,7 +458,7 @@ public class Game {
 		print();
 
 		if (this.ended) {
-			System.out.print("PLAYER ONE WINS");
+			System.out.print("PLAYER ONE WINS"); 
 			System.exit(0);
 		}else if (this.gameover) {
 			System.out.print("GAME OVER\n"); 
