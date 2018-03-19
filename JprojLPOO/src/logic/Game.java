@@ -1,15 +1,16 @@
 package logic;
 
-import java.util.Random; 
-
 import logic.Guard.GuardType;
+
+import java.util.Random;
 
 public class Game {
 	public boolean gameover;
 	public boolean ended;
 	public boolean passed;
 	public int level;
-	Level board;
+	public Level board;
+	public String mapping="";
 
 	Hero hero;
 	Guard guard;
@@ -86,7 +87,10 @@ public class Game {
 	public void setGuard(Guard grd) {
 		this.guard = grd;
 	}
-
+	public void setHero(Hero heroi) {
+		this.hero = heroi;
+	}
+	
 	public void setGameOver() {
 		this.gameover = true;
 		
@@ -113,6 +117,8 @@ public class Game {
 		}
 	}
 
+	
+	
 	// TENTAR COLOCAR EM OGRE
 	public void setOgre() {
 
@@ -467,12 +473,66 @@ public class Game {
 	public void print() {
 		System.out.println();
 		for (int i = 0; i < this.board.getMap().length; i++) {
-			for (int j = 0; j < this.board.getMap().length; j++) {
+			for (int j = 0; j < this.board.getMap()[0].length; j++) {
 				if (!update(i, j))
 					System.out.print(this.board.getMap()[i][j] + " ");
 			}
 			System.out.print("\n");
 		}
 	}
+	
+	
+	public void showGame() {
 
+		mapping = "";
+
+		for (int i = 0; i < board.getMap().length; i++) {
+			for (int j = 0; j < board.getMap()[0].length; j++) {
+				if (!updateMapping(i, j))
+					mapping += board.getMap()[i][j] + " ";
+				
+			}
+			mapping += "\n";
+		}
+	}
+
+	public boolean updateMapping(int y, int x) {
+
+		// hero
+		if (hero.getCol() == y && hero.getLine() == x) {
+			mapping += hero.getSymbol() + " ";
+			return true;
+		}
+
+		if (guard != null) {
+
+			// guard
+			if (guard.getCol() == y && guard.getLine() == x) {
+				mapping += guard.getSymbol() + " ";
+				return true;
+			}
+
+		}
+
+		if (getLevelint() ==2 && ogres.length != 0) {
+
+			// ogre and club
+			for (int i = 0; i < ogres.length; i++) {
+
+				if (ogres[i].getCol() == y && ogres[i].getLine() == x) {
+					mapping +=ogres[i].getSymbol() + " ";
+					return true;
+				}
+
+				if (ogres[i].getClub().getCol() == y && ogres[i].getClub().getLine() == x) {
+					mapping += ogres[i].getClub().getSymbol() + " ";
+					return true;
+				}
+			}
+		}
+
+		return false;
+}
+	
+	
 }

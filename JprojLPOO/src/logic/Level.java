@@ -18,7 +18,7 @@ public class Level {
 					{ 'X', ' ', 'I', ' ', 'I', ' ', 'X', 'k', ' ', 'X' },
 					{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' } };
 			this.map = mapaToUse;
-			this.isDoorsOpen =false;
+			
 		}
 		if(numb == 2) {
 			char [][] mapaToUse = { 
@@ -32,7 +32,7 @@ public class Level {
 					{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' }, 
 					{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' }, };
 			this.map = mapaToUse;
-			this.isDoorsOpen =false;
+
 		}
 		if(numb == 3) { //varios guardas
 			char [][] mapaToUse =  { 
@@ -47,7 +47,7 @@ public class Level {
 					{ 'X', ' ', 'I', ' ', 'I', ' ', 'X', 'k', ' ', 'X' },
 					{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' } };
 			this.map = mapaToUse;
-			this.isDoorsOpen =false;
+	
 		}
 		if(numb == 4) { //varios Ogres
 			char [][] mapaToUse = { 
@@ -61,8 +61,9 @@ public class Level {
 					{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' }, 
 					{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' }, };
 			this.map = mapaToUse;
-			this.isDoorsOpen =false;
+	
 		}
+		this.isDoorsOpen =false;
 	}
 	
 	public Level(char[][] mp) {
