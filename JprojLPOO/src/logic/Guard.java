@@ -21,14 +21,15 @@ public class Guard extends BoardObject {
 		public String getCustomString() {
 			return custom;
 		}
+		
 
 	}
 
-//	public void setGuard(int lin, int col,GuardType tipo) {
-//
-//		Guard guard = new Guard(lin, col, tipo);
-//
-//	}
+	public void setGuard(int lin, int col,GuardType tipo) {
+
+		Guard guard = new Guard(lin, col, tipo);
+
+	}
 	public Guard(int nmb, int nmb1, char g) {
 		super(nmb, nmb1, g);
 		this.Type = GuardType.ROOKIE;

@@ -32,24 +32,24 @@ public class TestHeroLogic {
 		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		//Posicao inicial
+		
 		assertEquals(1, jogo.getHero().getLine());
 		assertEquals(1, jogo.getHero().getCol());
 		//Movimento
 		Guard grd = new Guard(1,4,'G');
 		jogo.setGuard(grd);
-		jogo.move(2); //para cima
+		jogo.move(2); //down
 		assertEquals(2, jogo.getHero().getLine());
 		assertEquals(1, jogo.getHero().getCol());
-		jogo.move(4); // para a esquerda
-		assertEquals(2,jogo.getHero().getLine());
-		assertEquals(1,jogo.getHero().getCol());
-		jogo.move(8); // para cima
+		jogo.move(8); // up
 		assertEquals(1,jogo.getHero().getLine());
 		assertEquals(1,jogo.getHero().getCol());
-		jogo.move(6); // para a direita
+		jogo.move(6); // right
 		assertEquals(1,jogo.getHero().getLine());
 		assertEquals(2,jogo.getHero().getCol());
-		
+		jogo.move(4); //left
+		assertEquals(1,jogo.getHero().getLine());
+		assertEquals(1,jogo.getHero().getCol());
 	}
 
 	@Test
@@ -59,10 +59,27 @@ public class TestHeroLogic {
 		jogo.setLevel(mapTest);
 		Guard grd = new Guard(1,4,'G');
 		jogo.setGuard(grd);
-		jogo.move(8); //para cima
+		jogo.move(8); //up
 		assertEquals(1, jogo.getHero().getLine());
 		assertEquals(1, jogo.getHero().getCol());
-		
+		jogo.move(4); //left
+		assertEquals(1, jogo.getHero().getLine());
+		assertEquals(1, jogo.getHero().getCol());
+		/* NADA DISTO FUNCIONA - MUDAR sets ou apagar. criar um setHero?
+		//change hero position
+		mapTest[1][1]=' ';
+		mapTest[3][4]='H';
+		jogo.getHero().setLine(3);
+		jogo.getHero().setLine(4);
+		assertEquals(3, jogo.getHero().getLine());
+		assertEquals(4, jogo.getHero().getCol());
+		jogo.move(2); //down
+		assertEquals(3, jogo.getHero().getLine());
+		assertEquals(4, jogo.getHero().getCol());
+		jogo.move(6); //left
+		assertEquals(3, jogo.getHero().getLine());
+		assertEquals(4, jogo.getHero().getCol());
+		*/
 	}
 
 	@Test

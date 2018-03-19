@@ -1,6 +1,7 @@
 package gui;
 import java.awt.EventQueue;
 import logic.*;
+
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import java.awt.Color;
@@ -8,7 +9,8 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
-
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
@@ -22,7 +24,7 @@ public class GameWindow {
  
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextArea textArea;
 	private JLabel lblNewLabel_2;
 	private JButton btnNewButton;
 	private JButton btnUp;
@@ -88,6 +90,7 @@ public class GameWindow {
 		frame.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Dialog", Font.BOLD, 10));
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -115,23 +118,46 @@ public class GameWindow {
 		gbc_comboBox.gridy = 1;
 		frame.getContentPane().add(comboBox, gbc_comboBox);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Courier New", Font.PLAIN, 10));
-		textField_1.setEditable(false);
+		textArea = new JTextArea();
+		textArea.setFont(new Font("Courier New", Font.BOLD, 15));
+		textArea.setEditable(false);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+textArea.setMargin(new Insets(10,10,10,10));
+		gbc_textField_1.ipadx=2;
+		gbc_textField_1.ipady=2;
 		gbc_textField_1.gridheight = 7;
 		gbc_textField_1.gridwidth = 3;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+	//	gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.BOTH;
 		gbc_textField_1.gridx = 1;
 		gbc_textField_1.gridy = 2;
-		frame.getContentPane().add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		frame.getContentPane().add(textArea, gbc_textField_1);
+		textArea.setColumns(10);
 		
 		btnNewButton = new JButton("New Game");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				jogo =new Game(Integer.parseInt(textField.getText()),comboBox.getSelectedItem());
+				jogo.board = new Level(1);
+				Hero heroi = new Hero(1,1);
+				jogo.setHero(heroi);
+		 
+				//cria guarda do tipo escolhido na combo box
+				Guard grd = new Guard(1,8,GuardType.valueOf(comboBox.getSelectedItem().toString()));
+				jogo.setGuard(grd);
+
+				if (textField.getText().equals(""))
+					JOptionPane.showMessageDialog(frame, "You have to insert a positive number!");
+				else {
+					
+					//perguntar Ricardo como implementou multiplos Ogres
+					//jogo.setOgre(Integer.parseInt(textField.getText()));
+				
+					jogo.showGame();//mete em mapping
+					textArea.setText(jogo.mapping);//transfere a string mapping para o textField
+				}
+
+				lblNewLabel_2.setText("Click On buttons to move the hero.");
 			}
 		});
 		
@@ -144,6 +170,14 @@ public class GameWindow {
 		frame.getContentPane().add(btnNewButton, gbc_btnNewButton);
 		
 		btnUp = new JButton("Up");
+		btnUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				jogo.move(4);//somehow it's not 8
+				jogo.showGame();//mete em mapping
+				textArea.setText(jogo.mapping);//transfere a string mapping para o textField
+			}
+			
+		});
 		btnUp.setFont(new Font("Dialog", Font.BOLD, 10));
 		GridBagConstraints gbc_btnUp = new GridBagConstraints();
 		gbc_btnUp.gridwidth = 2;
@@ -153,6 +187,14 @@ public class GameWindow {
 		frame.getContentPane().add(btnUp, gbc_btnUp);
 		
 		btnLeft = new JButton("Left");
+		btnLeft.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				jogo.move(8);	//somehow it's not 4
+				jogo.showGame();//mete em mapping
+				textArea.setText(jogo.mapping);//transfere a string mapping para o textField
+			}
+			
+		});
 		btnLeft.setFont(new Font("Dialog", Font.BOLD, 10));
 		GridBagConstraints gbc_btnLeft = new GridBagConstraints();
 		gbc_btnLeft.insets = new Insets(0, 0, 5, 5);
@@ -161,6 +203,14 @@ public class GameWindow {
 		frame.getContentPane().add(btnLeft, gbc_btnLeft);
 		
 		btnRight = new JButton("Right");
+		btnRight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				jogo.move(2);//somehow it's not 6
+				jogo.showGame();//mete em mapping
+				textArea.setText(jogo.mapping);//transfere a string mapping para o textField
+			}
+			
+		});
 		btnRight.setFont(new Font("Dialog", Font.BOLD, 10));
 		GridBagConstraints gbc_btnRight = new GridBagConstraints();
 		gbc_btnRight.insets = new Insets(0, 0, 5, 0);
@@ -169,6 +219,14 @@ public class GameWindow {
 		frame.getContentPane().add(btnRight, gbc_btnRight);
 		
 		btnDown = new JButton("Down");
+		btnDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				jogo.move(6);	//somehow it's not 2
+				jogo.showGame();//mete em mapping
+				textArea.setText(jogo.mapping);//transfere a string mapping para o textField
+			}
+			
+		});
 		btnDown.setFont(new Font("Dialog", Font.BOLD, 10));
 		GridBagConstraints gbc_btnDown = new GridBagConstraints();
 		gbc_btnDown.gridwidth = 2;
@@ -187,6 +245,12 @@ public class GameWindow {
 		frame.getContentPane().add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);				
+			}
+			
+		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 10));
 		GridBagConstraints gbc_btnExit = new GridBagConstraints();
 		gbc_btnExit.gridwidth = 2;
@@ -195,7 +259,27 @@ public class GameWindow {
 		gbc_btnExit.gridy = 8;
 		frame.getContentPane().add(btnExit, gbc_btnExit);
 	}
-
+	
+//	
+//	public void processButtons(char move) {		
+//
+//		if ((jogo.currentState != State.jogoOver) && (jogo.currentState != State.jogoWin)) {
+//			jogo.updatePos(move);
+//			jogo.setPrintString();
+//			textArea.setText(jogo.mapping);
+//		}
+//		
+//		if (jogo.board== State.jogoWin)
+//			lblNewLabel_2.setText("Player One Wins");
+//		else if (jogo.passed) {
+//			lblNewLabel_2.setText("new level");
+//			jogo.passed = false;
+//		} else if (jogo.currentState == State.jogoOver){
+//			lblNewLabel_2.setText("GAME OVER");
+//		}else{
+//			lblNewLabel_2.setText("...playing...");
+//		}
+//}
 	
 
 }
