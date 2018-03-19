@@ -12,3 +12,7 @@ out/
 *.project
 
 *.xml
+
+JprojLPOO/.classpath
+JprojLPOO/.settings
+JprojLPOO/.project
