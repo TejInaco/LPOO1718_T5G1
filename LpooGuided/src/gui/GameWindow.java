@@ -127,7 +127,7 @@ textArea.setMargin(new Insets(10,10,10,10));
 		gbc_textField_1.ipady=2;
 		gbc_textField_1.gridheight = 7;
 		gbc_textField_1.gridwidth = 3;
-	//	gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+	//	gbc_textField_1.insets = new Insets(0, 0, 5, 5); 
 		gbc_textField_1.fill = GridBagConstraints.BOTH;
 		gbc_textField_1.gridx = 1;
 		gbc_textField_1.gridy = 2;

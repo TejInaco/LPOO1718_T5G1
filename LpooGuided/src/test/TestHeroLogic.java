@@ -38,7 +38,7 @@ public class TestHeroLogic {
 		assertEquals(1, jogo.getHero().getLine());
 		assertEquals(1, jogo.getHero().getCol());
 		//Movimento
-		Guard grd = new Guard(1,4,'G');
+		Guard grd = new Guard(1,4,'G'); 
 		jogo.setGuard(grd);
 		jogo.move(2); //down
 		assertEquals(2, jogo.getHero().getLine());

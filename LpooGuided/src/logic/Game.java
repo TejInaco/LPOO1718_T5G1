@@ -461,7 +461,7 @@ public class Game {
 			System.out.print("PLAYER ONE WINS");
 			System.exit(0);
 		}else if (this.gameover) {
-			System.out.print("GAME OVER\n");
+			System.out.print("GAME OVER\n"); 
 			System.exit(0);
 		}
 		checkLevel();

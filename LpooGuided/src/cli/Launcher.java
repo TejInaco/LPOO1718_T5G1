@@ -10,7 +10,7 @@ public class Launcher {
 
 		Game game = new Game();
 		game.setLevel();
-		game.setGuard();
+		game.setGuard(); 
 		game.setOgre();
 		//game.print();
 		Scanner s = new Scanner(System.in);
