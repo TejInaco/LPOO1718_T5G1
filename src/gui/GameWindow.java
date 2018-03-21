@@ -138,6 +138,7 @@ public class GameWindow {
 			public void actionPerformed(ActionEvent arg0) {
 				//fazer habilitar botoes de movimento
 				jogo = new Game(Integer.parseInt(textField.getText()), comboBox.getSelectedItem());
+				textArea.setBackground(Color.WHITE);
 				jogo.board = new Level(1);
 				Hero heroi = new Hero(1, 1);
 				jogo.setHero(heroi);
@@ -259,16 +260,19 @@ public class GameWindow {
 			//disabilitar botoes de movimento
 		} else if (jogo.passed) {
 			lblNewLabel_2.setText("Player One Wins");
-			textArea.setBackground(Color.GREEN);
+			textArea.setBackground(Color.GREEN);			
 			//disabilitar botoes de movimento
+			//passar para o nivel dois;
 		} else {
 			lblNewLabel_2.setText("go on");
 			jogo.move(dir);
-			jogo.getGuard().move();
+			
 			jogo.showGame();// mete em mapping
 			textArea.setText(jogo.mapping);// transfere a string mapping para o textField
 
 		}
+		
+	
 
 	}
 

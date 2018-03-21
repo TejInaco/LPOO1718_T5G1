@@ -26,6 +26,10 @@ public class Game {
 		this.crazyOgre = new Ogre();
 	}
 	public Game(int ogres, Object tipo) {
+		this.gameover = false;
+		this.ended = false;
+		this.passed = false;
+		this.level = 1;
 		
 		this.guard = new Guard(1,8,(GuardType) tipo);
 		this.ogres = new Ogre[ogres];
@@ -91,8 +95,8 @@ public class Game {
 		this.hero = heroi;
 	}
 	
-	public void setGameOver() {
-		this.gameover = true;
+	public void setGameOver(boolean bln) {
+		this.gameover = bln;
 		
 	}
 	
@@ -232,8 +236,7 @@ public class Game {
 			hero.setLine(newLine);
 			hero.setCol(newCol);
 		}
-
-		validateRules();
+		this.validateRules();
 
 	}
 
@@ -271,7 +274,7 @@ public class Game {
 			//
 			
 			if (this.getCrazyOgre().collision(this.hero.getLine(), this.hero.getCol()))
-					this.setGameOver();
+					this.setGameOver(true);
 
 			if (this.crazyOgre.stun(this.hero.getLine(), this.hero.getCol())) {
 				this.crazyOgre.setSymbol('8');
@@ -302,7 +305,7 @@ public class Game {
 				this.board.openDoors();
 
 			if (this.guard.collision(this.hero.getLine(), this.hero.getCol()))
-				this.setGameOver();
+				this.setGameOver(true);
 
 			if (board.foundDoor(hero.getLine(), hero.getCol()))
 				passed = true;
