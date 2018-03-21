@@ -457,11 +457,14 @@ public class Game {
 	public void display() {
 		print();
 
-		if (this.ended)
+		if (this.ended) {
 			System.out.print("PLAYER ONE WINS");
-		else if (this.gameover)
+			System.exit(0);
+		}
+		else if (this.gameover) {
 			System.out.print("GAME OVER\n");
-
+			System.exit(0);
+		}
 		checkLevel();
 	}
 
@@ -486,28 +489,27 @@ public class Game {
 
 		mapping = "";
 
-		for (int i = 0; i < board.getMap().length; i++) {
-			for (int j = 0; j < board.getMap()[0].length; j++) {
-				if (!updateMapping(i, j))
-					mapping += board.getMap()[i][j] + " ";
+		for (int lin = 0; lin < board.getMap().length; lin++) {
+			for (int col = 0; col < board.getMap()[0].length; col++) {
+				if (!updateMapping(lin, col))
+					mapping += board.getMap()[lin][col] + " ";
 				
 			}
 			mapping += "\n";
 		}
 	}
 
-	public boolean updateMapping(int y, int x) {
+	public boolean updateMapping(int lin, int col) {
 
-		// hero
-		if (hero.getCol() == y && hero.getLine() == x) {
+		if (hero.getLine() == lin &&  hero.getCol() == col) {
 			mapping += hero.getSymbol() + " ";
 			return true;
 		}
 
 		if (guard != null) {
 
-			// guard
-			if (guard.getCol() == y && guard.getLine() == x) {
+	
+			if (guard.getLine() == lin && guard.getCol() ==col) {
 				mapping += guard.getSymbol() + " ";
 				return true;
 			}
@@ -519,12 +521,12 @@ public class Game {
 			// ogre and club
 			for (int i = 0; i < ogres.length; i++) {
 
-				if (ogres[i].getCol() == y && ogres[i].getLine() == x) {
+				if (ogres[i].getLine() == lin && ogres[i].getCol() == col) {
 					mapping +=ogres[i].getSymbol() + " ";
 					return true;
 				}
 
-				if (ogres[i].getClub().getCol() == y && ogres[i].getClub().getLine() == x) {
+				if ( ogres[i].getClub().getLine() == lin && ogres[i].getClub().getCol()==col) {
 					mapping += ogres[i].getClub().getSymbol() + " ";
 					return true;
 				}
