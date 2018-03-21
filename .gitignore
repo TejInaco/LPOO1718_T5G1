@@ -1,6 +1,7 @@
 
-\.idea/
-bin/
+.*
+/.idea/
+/bin/
 .idea/
 out/
 .settings/
@@ -13,6 +14,8 @@ out/
 
 *.xml
 
-JprojLPOO/.classpath
-JprojLPOO/.settings
-JprojLPOO/.project
+/JprojLPOO/.classpath
+/JprojLPOO/.settings
+/JprojLPOO/.project
+/LpooGuided/
+
