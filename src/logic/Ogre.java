@@ -8,11 +8,11 @@ public class Ogre extends BoardObject {
 
 	public Ogre() {
 		super(4, 1, 'O');
-		club = new Club(3,1); 
+		this.club = new Club(3,1); 
 	}
 	public Ogre(int lnh, int cln) {
 		super(lnh,cln);
-		club = new Club(3,1);
+		this.club = new Club(3,1);
 	}
 
 	public Club getClub() {
@@ -26,6 +26,10 @@ public class Ogre extends BoardObject {
 	}
 	public void setStun() {
 		this.stun = true;
+	}
+	public void setClub(int lnh, int clm) {
+		this.club.setLine(lnh);
+		this.club.setCol(clm);
 	}
 	
 	public void incStunCounter() {

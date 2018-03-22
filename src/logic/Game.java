@@ -173,38 +173,36 @@ public class Game {
 		}
 	}
 
-	public void CastClub(Ogre ogre) {
+	public void castClub(Ogre ogre) {
 
 		while (true) {
 
-			int newLine = ogre.getLine();
-			int newCol = ogre.getCol();
-
+			int newLine = this.getCrazyOgre().getLine();
+			int newCol = this.getCrazyOgre().getCol();
+			
 			Random random = new Random();
 
 			int dir = 2 * (1 + random.nextInt(4));
 			
 			switch (dir) {
-			case 8:
-				newLine++;
-				break;
-			case 6:
-				newLine--;
-				break;
-			case 2:
-				newCol++;
-				break;
-			case 4:
-				newCol--;
-				break;
+				case 8:
+					newLine++;
+					break;
+				case 6:
+					newLine--;
+					break;
+				case 2:
+					newCol++;
+					break;
+				case 4:
+					newCol--;
+					break;
 			}
-
+			
 			if (board.isEmpty(newLine, newCol)) {
-				ogre.getClub().setLine(newLine);
-				ogre.getClub().setCol(newCol);
+				this.getCrazyOgre().setClub(newLine, newCol);
 				break;
 			}
-
 		}
 	}
 
@@ -265,44 +263,44 @@ public class Game {
 	}
 	
 	public void validateRulesLevel2() {
-		//TODO verificar o comportamento do Ogre com o Luis
+		//TODO As portas so abrem quando o heroi chega as portas, extra left click to open
 		move(this.getCrazyOgre());
+		castClub(this.getCrazyOgre());
 		
 		if (this.getCrazyOgre().getStun()) {
 			move(this.getCrazyOgre());
 		}else{
 			this.getCrazyOgre().incStunCounter();
 		}
+		//porta so abrem quando o heroi chegar la
+		if(this.hero.getSymbol() == 'K' &&
+				this.hero.getCol() == 1 &&
+				this.hero.getLine() == 1) {
+			this.board.openDoors();
+		}
+		//check if hero tem a chave
+		if (this.board.gotKey(this.hero.getLine(), this.hero.getCol())) {
+			this.hero.setSymbol('K');
+		}
 	
-	CastClub(this.getCrazyOgre());
+		//Collision
+		if (this.getCrazyOgre().collision(this.hero.getLine(), this.hero.getCol()))
+				this.setGameOver(true);
 	
-	//check if hero tem a chave
-	if (this.board.gotKey(this.hero.getLine(), this.hero.getCol())) {
-		this.board.openDoors();
-		this.hero.setSymbol('K');
-	}
-	
-	if (this.getCrazyOgre().collision(this.hero.getLine(), this.hero.getCol()))
-			this.setGameOver(true);
+		if (this.board.gotKey(this.crazyOgre.getCol(), this.crazyOgre.getLine())) {
+			this.crazyOgre.setSymbol('$');
+		}else if (!this.crazyOgre.getStun()) {
+			this.crazyOgre.setSymbol('O');
+		}
 
-	if (this.crazyOgre.stun(this.hero.getLine(), this.hero.getCol())) {
-		this.crazyOgre.setSymbol('8');
-		this.crazyOgre.setStun();
-	}
-	
-	if (this.board.gotKey(this.crazyOgre.getCol(), this.crazyOgre.getLine())) {
-		this.crazyOgre.setSymbol('$');
-	}else if (!this.crazyOgre.getStun()) {
-		this.crazyOgre.setSymbol('O');
-	}
-
-	if (this.board.gotKey(this.crazyOgre.getClub().getCol(), this.crazyOgre.getClub().getLine()))
-		this.crazyOgre.getClub().setSymbol('$');
-	else
-		this.crazyOgre.getClub().setSymbol('*');
-
-	if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
-		this.ended = true;
+		if (this.board.gotKey(this.crazyOgre.getClub().getCol(), this.crazyOgre.getClub().getLine()))
+			this.crazyOgre.getClub().setSymbol('$');
+		else
+			this.crazyOgre.getClub().setSymbol('*');
+		
+		if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
+			this.ended = true;
+		
 }
 
 	public void validateRulesLevel3(){
@@ -317,6 +315,11 @@ public class Game {
 
 		if (board.foundDoor(hero.getLine(), hero.getCol()))
 			passed = true;
+		
+		if (this.crazyOgre.stun(this.hero.getLine(), this.hero.getCol())) {
+			this.crazyOgre.setSymbol('8');
+			this.crazyOgre.setStun();
+		}
 	}
 	
 	public void validateRulesLevel4() {
@@ -327,7 +330,7 @@ public class Game {
 			else
 				ogres[i].incStunCounter();
 
-			CastClub(ogres[i]);
+			castClub(ogres[i]);
 
 		}
 
@@ -374,14 +377,20 @@ public class Game {
 				System.out.print(this.guard.getSymbol() + " ");
 				return true;
 			}
-
 		} 
 //OGRE (1)
 		if( this.level == 2 ) {
 			if (this.crazyOgre.getCol() == col && this.crazyOgre.getLine() == lin) {
-				System.out.print(this.crazyOgre.getSymbol() + " ");
+				System.out.print( this.crazyOgre.getSymbol()+ " " );
+				
 				return true;
 			}
+			if (this.crazyOgre.getClub().getCol()== col && this.crazyOgre.getClub().getLine() == lin) {
+				System.out.print( this.crazyOgre.getClub().getSymbol() + " " );				
+				return true;
+			}
+			
+			
 		}
 //OGRE(3)		
 		if( this.level == 4 ){
