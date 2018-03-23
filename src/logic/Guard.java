@@ -17,12 +17,10 @@ public class Guard extends BoardObject {
 		private GuardType(String custom) {
 			this.custom = custom;
 		}
-
 		public String getCustomString() {
 			return custom;
 		}
 		
-
 	}
 
 	public void setGuard(int lin, int col,GuardType tipo) {

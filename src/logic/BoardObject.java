@@ -37,5 +37,6 @@ public class BoardObject {
 
 	public void setSymbol(char symbl) {
 		this.symbol = symbl;
-}
+	}
+	
 }
