@@ -77,18 +77,18 @@ public class Level {
 	public boolean getisDoorsOpen() {
 		return this.isDoorsOpen;
 	}
-	public void setMap(char[][] mp) {
-		this.map = mp;
-	}
+	
 	public boolean isEmpty(int lin, int col) {
-		if (this.map[lin][col] == 'X' || this.map[lin][col] == 'I' || lin < 0 || lin >= 10 || col < 0 || col >= 10)
+		if ( ( lin < 0 || lin > this.getMap().length ) 
+				|| (col < 0 || col > this.getMap().length ) ) throw new IllegalArgumentException();
+		
+		if (this.map[lin][col] == 'X' || this.map[lin][col] == 'I' )
 			return false;
 		else 
-			return true;
+			return true;	
 	}
 
-	public boolean gotKey(int lin, int col) {
-		
+	public boolean gotKey(int lin, int col) {	
 		if (this.map[lin][col] == 'k')
 			return true;
 		else
