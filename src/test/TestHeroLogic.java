@@ -67,21 +67,6 @@ public class TestHeroLogic {
 		jogo.move(4); //left
 		assertEquals(1, jogo.getHero().getLine());
 		assertEquals(1, jogo.getHero().getCol());
-		/* NADA DISTO FUNCIONA - MUDAR sets ou apagar. criar um setHero?
-		//change hero position
-		mapTest[1][1]=' ';
-		mapTest[3][4]='H';
-		jogo.getHero().setLine(3);
-		jogo.getHero().setLine(4);
-		assertEquals(3, jogo.getHero().getLine());
-		assertEquals(4, jogo.getHero().getCol());
-		jogo.move(2); //down
-		assertEquals(3, jogo.getHero().getLine());
-		assertEquals(4, jogo.getHero().getCol());
-		jogo.move(6); //left
-		assertEquals(3, jogo.getHero().getLine());
-		assertEquals(4, jogo.getHero().getCol());
-		*/
 	}
 
 	@Test

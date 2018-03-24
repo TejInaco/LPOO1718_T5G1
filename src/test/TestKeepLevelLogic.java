@@ -23,6 +23,15 @@ public class TestKeepLevelLogic {
 			{'X','X','X','X','X','X'},
 		};
 
+//	Last Pit Mutation
+//	BO 3
+//	game 194
+//	guard 60
+//	guardtype 1
+//	level 28
+//	ogre 33
+	
+	
 	
 	@Test
 	public void tLevelFoundDoor() {
@@ -56,19 +65,37 @@ public class TestKeepLevelLogic {
 		Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		jogo.getBoard().isEmpty(0, 10);
+//		jogo.getBoard().isEmpty(10, 0);
+//		jogo.getBoard().isEmpty(-1, 0);
+//		jogo.getBoard().isEmpty(0, -1);
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void tLevelisEmptyArgs_1() throws Exception {
+		Game jogo = new Game();
+		Level levelTest = new Level(mapTest);
+		jogo.setLevel(mapTest);
 		jogo.getBoard().isEmpty(10, 0);
+//		jogo.getBoard().isEmpty(-1, 0);
+//		jogo.getBoard().isEmpty(0, -1);
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void tLevelisEmptyArgs_2() throws Exception {
+		Game jogo = new Game();
+		Level levelTest = new Level(mapTest);
+		jogo.setLevel(mapTest);
 		jogo.getBoard().isEmpty(-1, 0);
+//		jogo.getBoard().isEmpty(0, -1);
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void tLevelisEmptyArgs_3() throws Exception {
+		Game jogo = new Game();
+		Level levelTest = new Level(mapTest);
+		jogo.setLevel(mapTest);
 		jogo.getBoard().isEmpty(0, -1);
 	}
 	
 	
-//	Last Pit Mutation
-//	BO 3
-//	game 194
-//	guard 60
-//	guardtype 1
-//	level 28
-//	ogre 33
+
 	
 //********************************************     Tests Predefinidos 			***********  
 	@Test

@@ -412,27 +412,17 @@ public class Game {
 	}
 
 	public void checkLevel() {
-		
-		//if ( this.level == 1 ) 
-			// System.out.println("<2");
-			if (this.passed) {
-				// System.out.println("passed");
-
-				if (this.level == 1) {
-					// System.out.println("level1");
-					this.hero.setLine(7);
-					this.hero.setCol(1);
-					this.hero.setSymbol('H');
-				}
-				// System.out.println("++");
-				this.level++;
-				this.setLevel();
-				this.passed = false;
-				this.print();
-			}
+		if (this.level == 1) {
+			this.hero.setLine(7);
+			this.hero.setCol(1);
+			this.hero.setSymbol('H');
+		}
 		if (this.passed)
 			this.ended = true;
-	
+			this.level++;
+			this.setLevel();
+			this.passed = false;
+			this.print();
 	}
 
 	/*

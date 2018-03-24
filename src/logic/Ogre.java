@@ -68,7 +68,7 @@ public class Ogre extends BoardObject {
 		}
 
 		// caso esteja na mesma linha que *
-		if (col==getClub().getCol()) {
+		if (col== getClub().getCol()) {
 			if (line ==getClub().getLine() - 1 ||line==getClub().getLine() + 1)
 				return true;
 		}
