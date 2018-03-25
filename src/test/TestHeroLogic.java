@@ -7,14 +7,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import logic.Hero;
+//import logic.Hero;
 import logic.Game;
-import logic.BoardObject;
-import logic.Club;
+//import logic.BoardObject;
+//import logic.Club;
 import logic.Guard;
-import logic.Level;
-import logic.Ogre;
-import logic.*;
+//import logic.Level;
+//import logic.Ogre;
+//import logic.*;
 /**
  * @author notus
  *
@@ -57,7 +57,7 @@ public class TestHeroLogic {
 	@Test
 	public void testMoveHeroIntoWallUns() {	
 		Game jogo = new Game();
-		Level levelTest = new Level(mapTest);
+		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		Guard grd = new Guard(1,4,'G');
 		jogo.setGuard(grd);
@@ -72,7 +72,7 @@ public class TestHeroLogic {
 	@Test
 	public void testMoveHeroIntoAjdGuardDefeat() {
 		Game jogo = new Game();
-		Level levelTest = new Level(mapTest);
+		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		Guard grd = new Guard(1,4,'G');
 		jogo.setGuard(grd);
@@ -85,7 +85,7 @@ public class TestHeroLogic {
 	@Test
 	public void testMoveHeroIntoClosedDoors() {
 		Game jogo = new Game();
-		Level levelTest = new Level(mapTest);
+	//	Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		Guard grd = new Guard(1,4,'G');
 		jogo.setGuard(grd);
@@ -97,7 +97,7 @@ public class TestHeroLogic {
 	@Test
 	public void testMoveHeroIntoLeverCeelDoorsOpen() {
 		Game jogo = new Game();
-		Level levelTest = new Level(mapTest);
+		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		Guard grd = new Guard(1,4,'G');
 		jogo.setGuard(grd);
@@ -109,7 +109,7 @@ public class TestHeroLogic {
 	@Test
 	public void testMoveHeroIntoOpenDoors() {
 		Game jogo = new Game();
-		Level levelTest = new Level(mapTest);
+		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		Guard grd = new Guard(1,4,'G');
 		jogo.setGuard(grd);

@@ -2,7 +2,7 @@ package cli;
 
 import java.util.Scanner;
 
-import gui.GraphicsPanel;
+//import gui.GraphicsPanel;
 import logic.Game;
  
 public class Launcher { 

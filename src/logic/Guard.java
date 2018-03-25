@@ -2,7 +2,7 @@ package logic;
 
 import java.util.Random;
 
-import logic.Guard.GuardType;
+//import logic.Guard.GuardType;
 
 public class Guard extends BoardObject {
 	GuardType Type;
@@ -24,10 +24,10 @@ public class Guard extends BoardObject {
 	}
 
 	public void setGuard(int lin, int col,GuardType tipo) {
-
-		Guard guard = new Guard(lin, col, tipo);
-
+		//Guard guard =
+		new Guard(lin, col, tipo);
 	}
+	
 	public Guard(int nmb, int nmb1, char g) {
 		super(nmb, nmb1, g);
 		this.Type = GuardType.ROOKIE;

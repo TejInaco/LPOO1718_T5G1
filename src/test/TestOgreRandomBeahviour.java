@@ -1,17 +1,17 @@
 package test;
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 
 import org.junit.Test;
 
-import logic.Hero;
-import logic.Game;
-import logic.BoardObject;
-import logic.Club;
-import logic.Guard;
-import logic.Level;
-import logic.Ogre;
-import logic.*;
+//import logic.Hero;
+//import logic.Game;
+//import logic.BoardObject;
+//import logic.Club;
+//import logic.Guard;
+//import logic.Level;
+//import logic.Ogre;
+//import logic.*;
 
 public class TestOgreRandomBeahviour {
 
