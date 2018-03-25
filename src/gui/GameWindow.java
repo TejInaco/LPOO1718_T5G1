@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import logic.Guard.GuardType;
@@ -24,7 +26,7 @@ import java.awt.event.ActionEvent;
 public class GameWindow {
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField textField; 
 	private JTextArea textArea;
 	private JLabel lblNewLabel_2;
 	private JButton btnNewButton;
@@ -35,7 +37,10 @@ public class GameWindow {
 	private JButton btnExit;
 
 	Game jogo;
-
+	GraphicsPanel painel = new GraphicsPanel();
+	String oldmapping ="";
+	String newmapping ="";
+	int charpos = 0;
 	/**
 	 * Launch the application.
 	 */
@@ -136,8 +141,10 @@ public class GameWindow {
 		btnNewButton = new JButton("New Game");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//fazer habilitar botoes de movimento
+				enableButtons();
 				jogo = new Game(Integer.parseInt(textField.getText()), comboBox.getSelectedItem());
+				
+			
 				textArea.setBackground(Color.WHITE);
 				jogo.board = new Level(1);
 				Hero heroi = new Hero(1, 1);
@@ -253,27 +260,48 @@ public class GameWindow {
 	}
 
 	public void movement(int dir) {
-		
+
 		if (jogo.gameover) {
 			lblNewLabel_2.setText("GAME OVER");
 			textArea.setBackground(Color.RED);
-			//disabilitar botoes de movimento
+			disableButtons();
 		} else if (jogo.passed) {
 			lblNewLabel_2.setText("Player One Wins");
-			textArea.setBackground(Color.GREEN);			
-			//disabilitar botoes de movimento
-			//passar para o nivel dois;
+			textArea.setBackground(Color.GREEN);
+			disableButtons();
+			// passar para o nivel dois;
 		} else {
+			oldmapping = jogo.mapping;
 			lblNewLabel_2.setText("go on");
 			jogo.move(dir);
-			
+					
+
 			jogo.showGame();// mete em mapping
+			if ((charpos=jogo.mapping.compareTo(oldmapping))>0) {
+				System.out.println(charpos);
+				painel.repaint();
+			};	
 			textArea.setText(jogo.mapping);// transfere a string mapping para o textField
-
+			//newmapping = jogo.mapping;
+			
+			
+			
 		}
-		
-	
 
+	}
+
+	public void disableButtons() {
+		btnUp.setEnabled(false);
+		btnDown.setEnabled(false);
+		btnRight.setEnabled(false);
+		btnLeft.setEnabled(false);
+	}
+
+	public void enableButtons() {
+		btnUp.setEnabled(true);
+		btnDown.setEnabled(true);
+		btnRight.setEnabled(true);
+		btnLeft.setEnabled(true);
 	}
 
 }
