@@ -21,7 +21,7 @@ import logic.*;
  */
 public class TestHeroLogic {
 
-	protected char[][] mapTest = {
+	protected char[][] mapTest = { 
 			{'X','X','X','X','X','X'},
 			{'X','H',' ',' ','G','X'},
 			{'I',' ',' ',' ',' ','X'},
@@ -30,7 +30,7 @@ public class TestHeroLogic {
 		};
 	@Test
 	public void testMoveHeroIntoCell() {
-		Game jogo = new Game();
+		Game jogo = new Game(); 
 		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		//Posicao inicial
