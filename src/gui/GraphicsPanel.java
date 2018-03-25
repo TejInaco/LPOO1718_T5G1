@@ -14,7 +14,8 @@ public class GraphicsPanel extends JPanel implements MouseListener, MouseMotionL
 		addKeyListener(this);
 	}
 
-	@Override
+	// Handling keyboard and mouse events
+
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_LEFT:
@@ -53,12 +54,6 @@ public class GraphicsPanel extends JPanel implements MouseListener, MouseMotionL
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
@@ -83,28 +78,33 @@ public class GraphicsPanel extends JPanel implements MouseListener, MouseMotionL
 	}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
 
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g); // limpa fundo ...
-		g.setColor(Color.BLUE);
-		g.fillOval(x1, y1, x2 - x1 + 1, y2 - y1 + 1);
-		
-		//jogo.mapping.charAt(charpos).
-		
-		
-		
+	public void mousePressed(MouseEvent e) {
+		x2 = x1 = e.getX();
+		y2 = y1 = e.getY();
+		repaint();
+		// notifies SWING that it needs repainting
 	}
 
-	
-	
+	public void mouseDragged(MouseEvent e) {
+		x2 = e.getX();
+		y2 = e.getY();
+		repaint();
+	}
+
+	// public void paintComponent(Graphics g) {
+	// super.paintComponent(g); // limpa fundo ...
+	// g.setColor(Color.BLUE);
+	// g.fillOval(x1, y1, x2 - x1 + 1, y2 - y1 + 1);
+	//
+	// }
+
+	public void repaint(GameWindow gameWindow) {
+
+	}
+
 }

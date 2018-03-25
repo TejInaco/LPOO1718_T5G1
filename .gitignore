@@ -10,9 +10,9 @@ out/
 *.iml
 *.eml
 *.classpath
-#*.project
+*.project
 
-#*.xml
+*.xml
 
 /JprojLPOO/.classpath
 /JprojLPOO/.settings

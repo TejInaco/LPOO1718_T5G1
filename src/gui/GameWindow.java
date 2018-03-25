@@ -268,18 +268,19 @@ public class GameWindow {
 		} else if (jogo.passed) {
 			lblNewLabel_2.setText("Player One Wins");
 			textArea.setBackground(Color.GREEN);
-			disableButtons();
+			jogo.board.getSize();
+			//disableButtons();
 			// passar para o nivel dois;
+			
 		} else {
 			oldmapping = jogo.mapping;
 			lblNewLabel_2.setText("go on");
 			jogo.move(dir);
-					
+			System.out.println(jogo.board.getSize());	
 
 			jogo.showGame();// mete em mapping
-			if ((charpos=jogo.mapping.compareTo(oldmapping))>0) {
-				System.out.println(charpos);
-				painel.repaint();
+			if (jogo.mapping.compareTo(oldmapping)!=0) {
+				painel.repaint(this);	
 			};	
 			textArea.setText(jogo.mapping);// transfere a string mapping para o textField
 			//newmapping = jogo.mapping;
@@ -289,7 +290,9 @@ public class GameWindow {
 		}
 
 	}
-
+	
+	
+	
 	public void disableButtons() {
 		btnUp.setEnabled(false);
 		btnDown.setEnabled(false);

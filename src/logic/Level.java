@@ -78,6 +78,10 @@ public class Level {
 		return this.isDoorsOpen;
 	}
 	
+	public int getSize() {
+		return this.map[0].length;
+	}
+	
 	public boolean isEmpty(int lin, int col) {
 		if ( ( lin < 0 || lin > this.getMap().length ) 
 				|| (col < 0 || col > this.getMap().length ) ) throw new IllegalArgumentException();
