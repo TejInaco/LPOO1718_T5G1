@@ -59,22 +59,25 @@ public class guiLauncher {
 	}
 
 	public void processButtons(int dir) {		
-
-		if ((jogo.gameover) && (jogo.ended)) {
+		
+		if ((!jogo.gameover) && (!jogo.ended)) {
 			jogo.move(dir);
+		
 			jogo.showGame();
 			textArea.setText(jogo.mapping);
 		}
-		
+	
 		if (jogo.ended)
-			label.setText("You won.");
+			label.setText("Player One Wins");
 		else if (jogo.passed) {
-			label.setText("Level up.");
+			label.setText("New Level");
+			jogo.setLevelInt(jogo.getLevelint() + 1); 
 			jogo.passed = false;
 		} else if (jogo.gameover){
-			label.setText("You lost.");
+			label.setText("GAME OVER");
 		}else{
-			label.setText("Keep going...");
+			
+			label.setText("go on");
 		}
 	}
 
@@ -112,14 +115,14 @@ public class guiLauncher {
 		JComboBox<String> comboBox = new JComboBox();
 		comboBox.setBounds(166, 45, 150, 22);
 		frame.getContentPane().add(comboBox);
-		comboBox.addItem("Rookie");
-		comboBox.addItem("Drunken");
-		comboBox.addItem("Suspicious");
+		comboBox.addItem("ROOKIE");
+		comboBox.addItem("DRUNKEN");
+		comboBox.addItem("SUSPICIOUS");
 
 		JButton btnNewGame = new JButton("New Game");
 		btnNewGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				jogo = new Game(Integer.parseInt(textField.getText()), comboBox.getSelectedItem());
+				jogo = new Game(Integer.parseInt(textField.getText()), comboBox.getSelectedItem().toString());
 				
 				
 				textArea.setBackground(Color.WHITE);

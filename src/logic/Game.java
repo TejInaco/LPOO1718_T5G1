@@ -26,7 +26,26 @@ public class Game {
 		this.crazyOgre = new Ogre();
 	}
 	
-	
+	public Game(int ogres, String tipo) {
+		this.gameover = false;
+		this.ended = false;
+		this.passed = false;
+		this.level = 1;
+		
+		switch(tipo) {
+		case "Rookie":
+			this.guard = new Guard(1,8,GuardType.ROOKIE);
+			break;
+		case "Drunken":
+			this.guard = new Guard(1,8,GuardType.DRUNKEN);
+			break;
+		case "Suspicious":
+			this.guard = new Guard(1,8,GuardType.SUSPICIOUS);
+			break;
+		}
+		
+		this.ogres = new Ogre[ogres];
+	}
 	public Game(int ogres, Object tipo) {
 		this.gameover = false;
 		this.ended = false;
@@ -412,17 +431,18 @@ public class Game {
 	}
 
 	public void checkLevel() {
+	//System.out.println("aqui");
 		if (this.level == 1) {
 			this.hero.setLine(7);
 			this.hero.setCol(1);
 			this.hero.setSymbol('H');
-		}
-		if (this.passed)
-			this.ended = true;
+		}else {
+		//if (this.passed)
+			//this.ended = true;
 			this.level++;
 			this.setLevel();
 			this.passed = false;
-			this.print();
+			this.print();}
 	}
 
 	/*

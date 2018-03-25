@@ -84,7 +84,7 @@ public class Level {
 	
 	public boolean isEmpty(int lin, int col) {
 		if ( ( lin < 0 || lin > this.getMap().length ) 
-				|| (col < 0 || col > this.getMap().length ) ) throw new IllegalArgumentException();
+			|| (col < 0 || col > this.getMap().length ) ) throw new IllegalArgumentException();
 		
 		if (this.map[lin][col] == 'X' || this.map[lin][col] == 'I' )
 			return false;

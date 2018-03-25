@@ -22,9 +22,10 @@ public class Launcher {
 			int escolha = s.nextInt();
 
 			game.move(escolha);
-
-			game.display();
+		
+			
 		}
+		game.display();
 		s.close();
 		return;
 	}
