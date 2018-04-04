@@ -59,20 +59,41 @@ public class Ogre extends BoardObject {
 	}
 
 	public boolean collision(int line, int col) {
-
-		// caso esteja na mesma coluna que *
-		if (line ==getClub().getLine()) {
-
-			if (col==getClub().getCol() - 1 || col==getClub().getCol() + 1)
+		// caso esteja na mesma linha e coluna que *
+		if (line == this.getClub().getLine() &&
+				col == this.getClub().getCol())  {
+			return true;
+		}
+		// heroi a NO e a NE do Ogre
+		if (col == this.getCol() - 1 && line == this.getLine() - 1 ) {
 				return true;
 		}
-
-		// caso esteja na mesma linha que *
-		if (col== getClub().getCol()) {
-			if (line ==getClub().getLine() - 1 ||line==getClub().getLine() + 1)
+		if (col == this.getCol() + 1 && line == this.getLine() - 1 ) {
+			return true;
+		}
+		// heroi a SO e a SE do Ogre
+		if (col == this.getCol() - 1 && line == this.getLine() + 1 ) {
 				return true;
 		}
-
+		if (col == this.getCol() + 1 && line == this.getLine() + 1 ) {
+			return true;
+		}
+		// heroi a N
+		if (col == this.getCol()  && line == this.getLine() - 1 ) {
+			return true;
+		}
+		// heroi a S
+		if (col == this.getCol()  && line == this.getLine() + 1 ) {
+			return true;
+		}
+		// heroi a E
+		if (col == this.getCol() + 1  && line == this.getLine() ) {
+			return true;
+		}
+		// heroi a W
+		if (col == this.getCol() - 1  && line == this.getLine() ) {
+			return true;
+		}
 		return false;
 	}
 

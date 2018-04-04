@@ -25,7 +25,7 @@ public class Launcher {
 		
 			
 		}
-		game.display();
+		//game.display();
 		s.close();
 		return;
 	}

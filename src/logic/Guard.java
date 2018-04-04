@@ -184,21 +184,50 @@ public class Guard extends BoardObject {
 	public boolean collision(int lin, int col) {
 
 		if (this.getSymbol() == 'G') {// está acordado
-
-			// caso esteja na mesma linha que G
-			if (lin == getLine()) {
-
-				if (col == this.getCol() || col == this.getCol() - 1 || col == this.getCol() + 1)
+			// heroi a NO e a 
+			if (col == this.getCol() - 1 ) {
+				// heroi a NO do Guarda
+				if( line == this.getLine() - 1 ) {
 					return true;
+				}
+				// heroi a SO
+				if( line == this.getLine() + 1 ) {
+					return true;
+				}
 			}
-
-			// caso esteja na mesma coluna que G
-			if (col == this.getCol()) {
-				if (lin == this.getLine() || lin == this.getLine() - 1 || lin == this.getLine() + 1)
+			
+			if (col == this.getCol() + 1 ) {
+				//heroi a NE do Guarda
+				if( line == this.getLine() - 1 ) {
 					return true;
+				}
+				if( line == this.getLine() + 1 ) {
+					return true;
+				}
+			}
+			
+			if (col == this.getCol()){
+				// heroi a N
+				if(line == this.getLine() - 1 ) {
+					return true;
+				}
+				// heroi a S
+				if ( line == this.getLine() + 1 ) {
+					return true;
+				}
+			}
+			// heroi a E
+			if( line == this.getLine() ) {
+				if (col == this.getCol() + 1 ) {
+					return true;
+				}
+			// heroi a W
+				if (col == this.getCol() - 1 ) {
+					return true;
+				}
+			
 			}
 		}
-
 		return false;
 	}
 

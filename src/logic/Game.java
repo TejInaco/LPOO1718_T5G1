@@ -90,14 +90,19 @@ public class Game {
 		switch (this.level) {
 		case 4:
 			this.board = new Level(4);
+			this.hero.setCol(1);
+			this.hero.setLine(1);
 			break;
 		case 3:
 			this.board = new Level(3);
+			this.hero.setCol(1);
+			this.hero.setLine(1);
 			break;
 		case 2:
 			this.board = new Level(2);
 			this.hero.setCol(1);
 			this.hero.setLine(8);
+			this.hero.setSymbol('H');
 			break;
 		default:
 			this.board = new Level(1);
@@ -121,11 +126,17 @@ public class Game {
 		
 	}
 	public void setGuard() {
+		
 		Random rand = new Random();
-
 		int random = rand.nextInt(3);
-
-		switch (random) {
+		
+		if (this.level == 1) {
+			random = 0;
+		}
+		this.defineTypeGuard(random);
+	}
+	public void defineTypeGuard(int number_selected) {
+		switch (number_selected) {
 		case 0:
 			guard = new Guard(1, 8, GuardType.ROOKIE);
 			break;
@@ -139,6 +150,7 @@ public class Game {
 			break;
 		}
 	}
+	
 	// TENTAR COLOCAR EM OGRE
 	public void setOgre() {
 
@@ -278,7 +290,7 @@ public class Game {
 			this.board.openDoors();
 
 		if (this.guard.collision(this.hero.getLine(), this.hero.getCol()))
-			this.gameover = true;
+			this.setGameOver(true);
 
 		if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
 			this.passed = true;
@@ -286,7 +298,6 @@ public class Game {
 	}
 	
 	public void validateRulesLevel2() {
-		//TODO As portas so abrem quando o heroi chega as portas, extra left click to open
 		move(this.getCrazyOgre());
 		castClub(this.getCrazyOgre());
 		
@@ -307,10 +318,11 @@ public class Game {
 		}
 	
 		//Collision
-		if (this.getCrazyOgre().collision(this.hero.getLine(), this.hero.getCol()))
+ 		if (this.getCrazyOgre().collision(this.hero.getLine(), this.hero.getCol())) {
 				this.setGameOver(true);
-	
-		if (this.board.gotKey(this.crazyOgre.getCol(), this.crazyOgre.getLine())) {
+ 		}
+		
+ 		if (this.board.gotKey(this.crazyOgre.getCol(), this.crazyOgre.getLine())) {
 			this.crazyOgre.setSymbol('$');
 		}else if (!this.crazyOgre.getStun()) {
 			this.crazyOgre.setSymbol('O');
@@ -344,19 +356,16 @@ public class Game {
 		if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
 			this.passed = true;
 		
-		
 	}
 	
 	public void validateRulesLevel4() {
 		for (int i = 0; i < ogres.length; i++) {
-
 			if (!ogres[i].getStun())
 				move(ogres[i]);
 			else
 				ogres[i].incStunCounter();
 
 			castClub(ogres[i]);
-
 		}
 
 		if (board.gotKey(hero.getLine(), hero.getCol())) {
@@ -367,7 +376,7 @@ public class Game {
 		for (int i = 0; i < ogres.length; i++) {
 
 			if (ogres[i].collision(hero.getLine(), hero.getCol()))
-				gameover = true;
+				this.setGameOver(true);
 
 			if (ogres[i].stun(hero.getLine(), hero.getCol())) {
 				ogres[i].setSymbol('8');
@@ -437,8 +446,14 @@ public class Game {
 	}
 
 	public void checkLevel() {
+		if( this.passed && this.level == 4) {
+			this.display();
+		}
+		if(this.gameover) {
+			this.display();
+		}
 		if (this.passed) {
-			this.ended = true;
+			//this.ended = true;
 			this.level++;
 			this.setLevel();
 			this.passed = false;
@@ -461,7 +476,7 @@ public class Game {
 			System.out.print("GAME OVER\n");
 			System.exit(0);
 		}
-		checkLevel();
+		//checkLevel();
 	}
 
 	
