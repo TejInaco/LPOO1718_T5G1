@@ -3,10 +3,16 @@ Workcase LPOO
 Guided Project 2017/2018
 
 Guidelines for the delivery:
+
 [A] 
+
 [B]  
+
 [C] __DONE__ BetterCodeHub: Status badge 7 of 10
+
 [D] Added the picture with the BetterCodeHub indicator
+
+
 
 TODO: 
 1)Creating a new branch on Friday for A
