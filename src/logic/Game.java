@@ -96,6 +96,8 @@ public class Game {
 			break;
 		case 2:
 			this.board = new Level(2);
+			this.hero.setCol(1);
+			this.hero.setLine(8);
 			break;
 		default:
 			this.board = new Level(1);
@@ -266,6 +268,7 @@ public class Game {
 		if (this.level == 4) {//heroi e muitos Ogres
 			validateRulesLevel4();
 		}
+		this.checkLevel();
 	}
 	
 	public void validateRulesLevel1() {
@@ -278,7 +281,8 @@ public class Game {
 			this.gameover = true;
 
 		if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
-			this.passed = true;		
+			this.passed = true;
+		
 	}
 	
 	public void validateRulesLevel2() {
@@ -318,7 +322,7 @@ public class Game {
 			this.crazyOgre.getClub().setSymbol('*');
 		
 		if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
-			this.ended = true;
+			this.passed = true;
 		
 }
 
@@ -331,14 +335,16 @@ public class Game {
 
 		if (this.guard.collision(this.hero.getLine(), this.hero.getCol()))
 			this.setGameOver(true);
-
-		if (board.foundDoor(hero.getLine(), hero.getCol()))
-			passed = true;
 		
 		if (this.crazyOgre.stun(this.hero.getLine(), this.hero.getCol())) {
 			this.crazyOgre.setSymbol('8');
 			this.crazyOgre.setStun();
 		}
+		
+		if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
+			this.passed = true;
+		
+		
 	}
 	
 	public void validateRulesLevel4() {
@@ -380,8 +386,8 @@ public class Game {
 
 		}
 
-		if (board.foundDoor(hero.getLine(), hero.getCol()))
-			ended = true;
+		if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
+			this.passed = true;
 	}
 
 	
@@ -431,18 +437,13 @@ public class Game {
 	}
 
 	public void checkLevel() {
-	//System.out.println("aqui");
-		if (this.level == 1) {
-			this.hero.setLine(7);
-			this.hero.setCol(1);
-			this.hero.setSymbol('H');
-		}else {
-		//if (this.passed)
-			//this.ended = true;
+		if (this.passed) {
+			this.ended = true;
 			this.level++;
 			this.setLevel();
 			this.passed = false;
-			this.print();}
+			this.print();
+			}
 	}
 
 	/*
@@ -496,26 +497,23 @@ public class Game {
 
 	public boolean updateMapping(int lin, int col) {
 
-		if (hero.getLine() == lin &&  hero.getCol() == col) {
-			mapping += hero.getSymbol() + " ";
+		if (this.hero.getLine() == lin &&  this.hero.getCol() == col) {
+			mapping += this.hero.getSymbol() + " ";
 			return true;
 		}
 
-		if (guard != null) {
-
-	
-			if (guard.getLine() == lin && guard.getCol() ==col) {
-				mapping += guard.getSymbol() + " ";
+		if (this.guard != null) {
+			if (this.guard.getLine() == lin && this.guard.getCol() ==col) {
+				this.mapping += this.guard.getSymbol() + " ";
 				return true;
 			}
 
 		}
 
-		if (getLevelint() ==2 && ogres.length != 0) {
+		if ( this.getLevelint() == 2 && ogres.length != 0) {
 
 			// ogre and club
 			for (int i = 0; i < ogres.length; i++) {
-
 				if (ogres[i].getLine() == lin && ogres[i].getCol() == col) {
 					mapping +=ogres[i].getSymbol() + " ";
 					return true;
