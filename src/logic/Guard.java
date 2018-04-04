@@ -187,37 +187,37 @@ public class Guard extends BoardObject {
 			// heroi a NO e a 
 			if (col == this.getCol() - 1 ) {
 				// heroi a NO do Guarda
-				if( line == this.getLine() - 1 ) {
+				if( lin == this.getLine() - 1 ) {
 					return true;
 				}
 				// heroi a SO
-				if( line == this.getLine() + 1 ) {
+				if( lin == this.getLine() + 1 ) {
 					return true;
 				}
 			}
 			
 			if (col == this.getCol() + 1 ) {
 				//heroi a NE do Guarda
-				if( line == this.getLine() - 1 ) {
+				if( lin == this.getLine() - 1 ) {
 					return true;
 				}
-				if( line == this.getLine() + 1 ) {
+				if( lin == this.getLine() + 1 ) {
 					return true;
 				}
 			}
 			
 			if (col == this.getCol()){
 				// heroi a N
-				if(line == this.getLine() - 1 ) {
+				if(lin == this.getLine() - 1 ) {
 					return true;
 				}
 				// heroi a S
-				if ( line == this.getLine() + 1 ) {
+				if ( lin == this.getLine() + 1 ) {
 					return true;
 				}
 			}
 			// heroi a E
-			if( line == this.getLine() ) {
+			if( lin == this.getLine() ) {
 				if (col == this.getCol() + 1 ) {
 					return true;
 				}
