@@ -32,4 +32,5 @@ picture with the results for D
 Group work by:
 
 Ricardo Manuel Gonçalves da Silva - up201607780 - up201607780@fe.up.pt 
+
 Luís Ricardo Marques Oliveira - up201607946 - up201607946@fe.up.pt)
