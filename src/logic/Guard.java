@@ -37,7 +37,15 @@ public class Guard extends BoardObject {
 		super(line, col, 'G');
 		Type = type;
 	}
-
+	public GuardType getType() {
+		return Type;
+	}
+	public boolean getInverted() {
+		return this.inverted;
+	}
+	public void setInverted(boolean ft) {
+		 this.inverted = ft;
+	}
 	public void move() {
 		switch (Type) {
 
@@ -107,28 +115,7 @@ public class Guard extends BoardObject {
 				newcol++;
 			}
 
-		} else {// normal route
-
-			// if (Col == 8) {
-			// if (Line != 1) {
-			// newlin--;
-			// } else {
-			// newcol--;
-			// }
-			// } else if (Col == 7) {
-			// if (Line != 5) {
-			// newlin++;
-			// } else {
-			// newcol--;
-			// }
-			// } else if (Line == 6) {
-			// newcol++;
-			// } else if (Col != 1) {
-			// newlin++;
-			// } else
-			// newcol--;
-			// }
-
+		} else {
 			switch (this.col) {
 
 			case 1:// desce a nao ser que linha 6 ->
@@ -161,15 +148,11 @@ public class Guard extends BoardObject {
 				case 5: // esquerda a nao ser que coluna 1 que desce
 					if (this.col != 1) {
 						newcol--;
-					} else {// desce
-						newlin++;
 					}
 					break;
 				case 6: // direita a nao ser que coluna 8 que sobe
 					if (this.col != 8) {
 						newcol++;
-					} else {// sobe
-						newlin--;
 					}
 					break;
 				}
@@ -231,8 +214,6 @@ public class Guard extends BoardObject {
 		return false;
 	}
 
-	public GuardType getType() {
-		return Type;
-	}
+	
 
 }

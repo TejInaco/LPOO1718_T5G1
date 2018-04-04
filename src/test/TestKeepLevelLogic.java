@@ -103,7 +103,6 @@ public class TestKeepLevelLogic {
 		Game jogo = new Game();
 		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
-		jogo.setLevelInt(2);
 		Ogre ogreMal = new Ogre(1,4);
 		jogo.setCrazyOgre(ogreMal);
 		jogo.getHero().setLine(1);
@@ -122,9 +121,9 @@ public class TestKeepLevelLogic {
 		jogo.move(2);
 		jogo.move(2);
 		jogo.move(8);
-		assertTrue( jogo.getHero().getLine() == 2 );
-		assertTrue( jogo.getHero().getCol() == 1   );
-		assertTrue( jogo.getHero().getSymbol() == 'K');
+		assertEquals(2, jogo.getHero().getLine() );
+		assertEquals(1, jogo.getHero().getCol()  );
+		assertEquals('K', jogo.getHero().getSymbol());
 	}
 	
 	@Test

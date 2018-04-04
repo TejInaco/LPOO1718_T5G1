@@ -12,6 +12,7 @@ import logic.Game;
 //import logic.BoardObject;
 //import logic.Club;
 import logic.Guard;
+import logic.Guard.GuardType;
 //import logic.Level;
 import logic.Ogre;
 import logic.*;
@@ -28,6 +29,131 @@ public class TestHeroLogic {
 			{'I','k',' ',' ',' ','X'},
 			{'X','X','X','X','X','X'},
 		};
+	
+	@Test
+	public void testGameConst() {
+		Game jogo = new Game(1,GuardType.ROOKIE);
+
+		assertFalse(jogo.getGameOver());
+		assertFalse(jogo.ended);
+		assertFalse(jogo.getPassed());
+		assertEquals(1,jogo.getLevelint());
+//		jogo.setLevelInt(4);
+////		assertEquals(1,jogo.getHero().getLine());
+////		assertEquals(1,jogo.getHero().getCol());
+//		assertFalse(jogo.getLevelObj().getisDoorsOpen());
+//		jogo.setLevelInt(3);
+//		assertEquals(1,jogo.getHero().getLine());
+//		assertEquals(1,jogo.getHero().getCol());
+//		assertFalse(jogo.getLevelObj().getisDoorsOpen());
+//		jogo.setLevelInt(2);
+//		assertEquals(1,jogo.getHero().getLine());
+//		assertEquals(8,jogo.getHero().getCol());
+//		assertFalse(jogo.getLevelObj().getisDoorsOpen());
+		
+	}
+	
+	@Test
+	public void guardRoute() {
+		Game jogo = new Game();
+		Guard grd = new Guard(6,2, GuardType.ROOKIE);
+		jogo.setGuard(grd);
+		assertEquals(GuardType.ROOKIE,jogo.getGuard().getType() );
+		jogo.getGuard().setInverted(true);
+		jogo.getGuard().route();
+		assertEquals(1,grd.getCol()); //lin = 6
+		jogo.getGuard().route();
+		assertEquals(5,grd.getLine()); // 5,1
+		
+		jogo.getGuard().setCol(7); // 5,7
+		jogo.getGuard().route(); //--lin 
+		assertEquals(4,grd.getLine()); //4,7
+		jogo.getGuard().setLine(1);
+		jogo.getGuard().route();
+		assertEquals(8,grd.getCol()); //1,8
+		jogo.getGuard().route();
+		assertEquals(2,grd.getLine());
+		jogo.getGuard().setCol(5); //2,5
+		jogo.getGuard().route();
+		assertEquals(6,grd.getCol());
+		
+		jogo.getGuard().setInverted(false);
+		jogo.getGuard().setCol(1);
+		jogo.getGuard().setLine(6);
+		jogo.getGuard().route();
+		assertEquals(2,grd.getCol()); //2,6
+		
+		jogo.getGuard().setCol(1);
+		jogo.getGuard().setLine(5);
+		jogo.getGuard().route();
+		assertEquals(6,grd.getLine());
+		
+		jogo.getGuard().setCol(7);
+		jogo.getGuard().setLine(2);
+		jogo.getGuard().route();
+		assertEquals(3,grd.getLine());
+		
+		jogo.getGuard().setCol(7);
+		jogo.getGuard().setLine(5);
+		jogo.getGuard().route();
+		assertEquals(6,grd.getCol());
+		
+		jogo.getGuard().setCol(7);
+		jogo.getGuard().setLine(6);
+		jogo.getGuard().route();
+		assertEquals(8,grd.getCol());
+		
+		jogo.getGuard().setCol(8);
+		jogo.getGuard().setLine(6);
+		jogo.getGuard().route();
+		assertEquals(5,grd.getLine());
+		
+		jogo.getGuard().setCol(8);
+		jogo.getGuard().setLine(1);
+		jogo.getGuard().route();
+		assertEquals(7,grd.getCol());
+		
+		jogo.getGuard().setCol(8);
+		jogo.getGuard().setLine(7);
+		jogo.getGuard().route();
+		assertEquals(6,grd.getLine());
+		
+		jogo.getGuard().setCol(2);
+		jogo.getGuard().setLine(5);
+		jogo.getGuard().route();
+		assertEquals(1,grd.getCol());
+		
+		jogo.getGuard().setCol(1);
+		jogo.getGuard().setLine(5);
+		jogo.getGuard().route();
+		assertEquals(6,grd.getLine());
+		
+		jogo.getGuard().setCol(8);
+		jogo.getGuard().setLine(6);
+		jogo.getGuard().route();
+		assertEquals(5,grd.getLine());
+		
+		jogo.getGuard().setCol(7);
+		jogo.getGuard().setLine(6);
+		jogo.getGuard().route();
+		assertEquals(8,grd.getCol());
+		
+		jogo.getGuard().setCol(2);
+		jogo.getGuard().setLine(5);
+		jogo.getGuard().route();
+		assertEquals(1,grd.getCol());
+		
+//		jogo.getGuard().setCol(3);
+//		jogo.getGuard().setLine(5);
+//		jogo.getGuard().route();
+//		assertEquals(4,grd.getLine());
+		
+		jogo.getGuard().setCol(2);
+		jogo.getGuard().setLine(6);
+		jogo.getGuard().route();
+		assertEquals(3,grd.getCol());
+		
+	}
 	
 	@Test
 	public void ogreStunAndStuntCounter() { 
