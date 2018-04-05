@@ -2,37 +2,57 @@ package logic;
 
 import java.util.Random;
 
-//import logic.Guard.GuardType;
 
 public class Guard extends BoardObject {
+	
 	GuardType Type;
 	private boolean inverted = false;
 
 	public enum GuardType {
-
 		ROOKIE("G"), DRUNKEN("G"), SUSPICIOUS("G");
  
 		private String custom;
-
+		
+		/**
+		 * Set GuarType according with structure
+		 * @param custom string
+		 */
 		private GuardType(String custom) {
 			this.custom = custom;
 		}
+		/**
+		 * Get GuarType according with structure
+		 */
 		public String getCustomString() {
 			return custom;
 		}
 		
 	}
-
+	/**
+	 * Set Class Object Guard with a type of guard
+ 	 * @param lin -number line
+	 * @param col - column number
+	 * @param tipo - GuardType 
+	 * */
 	public void setGuard(int lin, int col,GuardType tipo) {
-		//Guard guard =
 		new Guard(lin, col, tipo);
 	}
-	
+	/**
+	 * Default constructor
+	 * @param nmb -number line
+	 * @param nmb1 - column number
+	 * @param g - symbol of the object can change between g or G
+	 */
 	public Guard(int nmb, int nmb1, char g) {
 		super(nmb, nmb1, g);
 		this.Type = GuardType.ROOKIE;
 	}
-	
+	/**
+	 * Constructor with a type of guard
+	 * @param line -number line
+	 * @param nmb1 - column number
+	 * @param type - GuardType
+	 */
 	public Guard(int line, int col, GuardType type) {
 		super(line, col, 'G');
 		Type = type;
