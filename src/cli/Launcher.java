@@ -5,8 +5,17 @@ import java.util.Scanner;
 //import gui.GraphicsPanel;
 import logic.Game;
  
+/**
+ * Main class Laucher 
+ * @return void - closes application
+ * */
 public class Launcher { 
-
+	
+	/**
+	 * Main fuction launcher
+	 * 
+	 * @param string[] args
+	 */
 	public static void main(String[] args) {
 
 		Game game = new Game();

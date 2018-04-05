@@ -16,7 +16,12 @@ public class Game {
 	Guard guard;
 	Ogre ogres[];
 	Ogre crazyOgre;
-
+	
+	
+	/**
+	 * Class Game Constructor 
+	 * default constructor
+	 * */
 	public Game() {
 		this.gameover = false;
 		this.ended = false;
@@ -25,7 +30,11 @@ public class Game {
 		this.hero = new Hero(1, 1);
 		this.crazyOgre = new Ogre();
 	}
-	
+	/**
+	 * Class Game Constructor 
+	 * @param ogres - number of object ogres to initialize
+	 * @param tipo - One of three type of guard
+	 * */
 	public Game(int ogres, String tipo) {
 		this.gameover = false;
 		this.ended = false;
@@ -46,6 +55,10 @@ public class Game {
 		
 		this.ogres = new Ogre[ogres];
 	}
+	/**
+	 * Class Game Constructor 
+	 * default constructor
+	 * */
 	public Game(int ogres, Object tipo) {
 		this.gameover = false;
 		this.ended = false;
