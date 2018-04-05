@@ -441,7 +441,7 @@ public class Game {
 		
 }
 	/**
-	 * Verifies behavior and game conditions in level 3
+	 * Verifies guard behavior and game conditions in level 3
 	 */
 	
 	public void validateRulesLevel3(){
@@ -463,7 +463,7 @@ public class Game {
 		
 	}
 	/**
-	 * Verifies behavior and game conditions in level 4
+	 * Verifies Ogres and Club behavior and game conditions in level 4
 	 */
 	public void validateRulesLevel4() {
 		for (int i = 0; i < ogres.length; i++) {
@@ -506,7 +506,11 @@ public class Game {
 			this.passed = true;
 	}
 
-	
+	/**
+	 * Print objects symbols in the map board game for with level
+	 * @param lin - number of line
+	 * @param col - number of column
+	 */
 	public boolean update(int lin, int col) {
 		if (this.hero.getCol() == col && this.hero.getLine() == lin) {
 			System.out.print(this.hero.getSymbol() + " ");
@@ -551,7 +555,9 @@ public class Game {
 		}
 		return false;
 	}
-
+	/**
+	 * Checks conditions when finishing level, game over and level change
+	 */
 	public void checkLevel() {
 		if( this.passed && this.level == 4) {
 			this.display();
@@ -567,11 +573,9 @@ public class Game {
 			this.print();
 			}
 	}
-
-	/*
+	/**
 	 * Function that manages the display
 	 */
-
 	public void display() {
 		this.print();
 
@@ -583,12 +587,9 @@ public class Game {
 		}
 		//checkLevel();
 	}
-
-	
-	/*
+	/**
 	 * Function that prints the current map
 	 */
-
 	public void print() {
 		System.out.println();
 		for (int i = 0; i < this.board.getMap().length; i++) {
@@ -599,22 +600,24 @@ public class Game {
 			System.out.print("\n");
 		}
 	}
-	
-	
+	/**
+	 * 
+	 */
 	public void showGame() {
-
 		mapping = "";
-
 		for (int lin = 0; lin < board.getMap().length; lin++) {
 			for (int col = 0; col < board.getMap()[0].length; col++) {
 				if (!updateMapping(lin, col))
 					mapping += board.getMap()[lin][col] + " ";
-				
 			}
 			mapping += "\n";
 		}
 	}
-
+	/**
+	 * 
+	 * @param lin - line number
+	 * @param col - column number
+	 */
 	public boolean updateMapping(int lin, int col) {
 
 		if (this.hero.getLine() == lin &&  this.hero.getCol() == col) {
@@ -645,7 +648,6 @@ public class Game {
 				}
 			}
 		}
-
 		return false;
 }
 	
