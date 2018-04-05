@@ -133,11 +133,10 @@ public class TestKeepLevelLogic {
 	@Test
 	public void testMoveToKeyAndKeyChangesRepresentation() {
 		Game jogo = new Game();
-		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
 		jogo.setLevelInt(2);
-		Ogre ogreMal = new Ogre(1,4);
-		jogo.setCrazyOgre(ogreMal);
+		Ogre ogremal = new Ogre(1,4);
+		jogo.setCrazyOgre(ogremal);
 		jogo.move(2);
 		jogo.move(2);
 		jogo.move(8);

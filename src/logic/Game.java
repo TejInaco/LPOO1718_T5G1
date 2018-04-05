@@ -284,7 +284,7 @@ public class Game {
 	}
 	
 	public void validateRulesLevel1() {
-		this.guard.move();
+		this.getGuard().move();
 
 		if (this.board.gotKey(this.hero.getLine(), this.hero.getCol()))
 			this.board.openDoors();
@@ -339,7 +339,6 @@ public class Game {
 }
 
 	public void validateRulesLevel3(){
-		//TODO rever o codigo para os 3 guardas
 		this.guard.move();
 
 		if (this.board.gotKey(this.hero.getLine(), this.hero.getCol()))
@@ -470,11 +469,9 @@ public class Game {
 
 		if (this.ended) {
 			System.out.print("PLAYER ONE WINS");
-			System.exit(0);
 		}
 		else if (this.gameover) {
-			System.out.print("GAME OVER\n");
-			System.exit(0);
+			System.out.print("GAME OVER\n");		
 		}
 		//checkLevel();
 	}
