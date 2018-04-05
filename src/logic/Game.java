@@ -258,9 +258,9 @@ public class Game {
 			break;
 		}
 
-		if (board.isEmpty(newLine, newCol)) {
-			hero.setLine(newLine);
-			hero.setCol(newCol);
+		if (this.board.isEmpty(newLine, newCol)) {
+			this.hero.setLine(newLine);
+			this.hero.setCol(newCol);
 		}
 		this.validateRules();
 

@@ -6,12 +6,13 @@ import org.junit.Test;
 
 //import logic.Hero;
 import logic.Game;
+import logic.Guard.GuardType;
 //import logic.BoardObject;
 //import logic.Club;
 //import logic.Guard;
 import logic.Level;
 import logic.Ogre;
-//import logic.*;
+import logic.*;
 
 public class TestKeepLevelLogic {
 
@@ -23,18 +24,36 @@ public class TestKeepLevelLogic {
 			{'X','X','X','X','X','X'},
 		};
 
-//	Last Pit Mutation
-//	BO 3
-//	game 194
-//	guard 60
-//	guardtype 1
-//	level 28
-//	ogre 33
-	
-	
-	
 	@Test
-	public void tLevelFoundDoor() {
+	public void validateRules_test() {
+		Game jogo = new Game();
+		Level lvl = new Level(3);
+		jogo.setLevelObjec(lvl);
+		jogo.setLevelInt(3);
+		assertEquals(3, jogo.getLevelint() );
+		Guard grd = new Guard(1,7,GuardType.ROOKIE);
+		jogo.setGuard(grd);
+		jogo.getHero().setCol(8);
+		jogo.getHero().setLine(8);
+		
+		jogo.move(4);
+		assertEquals(3,jogo.getLevelint() );
+		assertTrue( jogo.getLevelObj().getisDoorsOpen() );
+		jogo.getHero().setCol(0);
+		jogo.getHero().setLine(5);
+		jogo.validateRulesLevel3();
+		assertTrue( jogo.getPassed() );
+//		//jogo.checkLevel();
+//		assertEquals(4, jogo.getLevelint());
+//		assertTrue( jogo.getPassed() );
+		
+		
+		
+		
+	
+	}
+	@Test
+	public void levelFoundDoorTsT() {
 		Game jogo = new Game();
 		Level levelTest = new Level(mapTest);
 		jogo.setLevelObjec(levelTest);
@@ -43,7 +62,7 @@ public class TestKeepLevelLogic {
 	}
 	
 	@Test
-	public void tLevelsetgetMaps(){
+	public void LevelsetgetMaps(){
 		Game jogo = new Game();
 		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
@@ -51,7 +70,7 @@ public class TestKeepLevelLogic {
 		assertFalse( jogo.getBoard().isDoorsOpen );
 	}
 	@Test
-	public void tLevelisEmpty(){
+	public void LevelisEmpty(){
 		Game jogo = new Game();
 		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
@@ -60,7 +79,7 @@ public class TestKeepLevelLogic {
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void tLevelisEmptyArgs() throws Exception {
+	public void LevelisEmptyArgs() throws Exception {
 		Game jogo = new Game();
 		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
@@ -70,7 +89,7 @@ public class TestKeepLevelLogic {
 //		jogo.getBoard().isEmpty(0, -1);
 	}
 	@Test(expected=IllegalArgumentException.class)
-	public void tLevelisEmptyArgs_1() throws Exception {
+	public void LevelisEmptyArgs_1() throws Exception {
 		Game jogo = new Game();
 		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
@@ -79,7 +98,7 @@ public class TestKeepLevelLogic {
 //		jogo.getBoard().isEmpty(0, -1);
 	}
 	@Test(expected=IllegalArgumentException.class)
-	public void tLevelisEmptyArgs_2() throws Exception {
+	public void LevelisEmptyArgs_2() throws Exception {
 		Game jogo = new Game();
 		//Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
@@ -87,11 +106,11 @@ public class TestKeepLevelLogic {
 //		jogo.getBoard().isEmpty(0, -1);
 	}
 	@Test(expected=IllegalArgumentException.class)
-	public void tLevelisEmptyArgs_3() throws Exception {
+	public void LevelisEmptyArgs_3() throws Exception {
 		Game jogo = new Game();
 	//	Level levelTest = new Level(mapTest);
 		jogo.setLevel(mapTest);
-		jogo.getBoard().isEmpty(0, -1);
+		assertTrue( jogo.getBoard().isEmpty(0, -1) );
 	}
 	
 	
@@ -108,7 +127,8 @@ public class TestKeepLevelLogic {
 		jogo.getHero().setLine(1);
 		jogo.getHero().setCol(3);
 		jogo.validateRulesLevel2();
-		assertTrue( jogo.getGameOver() );
+		jogo.setCrazyOgre(ogreMal);
+		assertTrue( jogo.getCrazyOgre().collision(1, 3) );
 	}
 	@Test
 	public void testMoveToKeyAndKeyChangesRepresentation() {
