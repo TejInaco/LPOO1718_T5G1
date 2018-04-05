@@ -68,37 +68,81 @@ public class Game {
 		this.guard = new Guard(1,8,(GuardType) tipo);
 		this.ogres = new Ogre[ogres];
 	}
-	
+	/**
+	 * Get attribute board 
+	 * @return attribute board
+	 * */
 	public Level getBoard() {
 		return this.board;
 	}
+	/**
+	 * Get attribute hero 
+	 * @return Class Object Hero
+	 * */
 	public Hero getHero() {
 		return this.hero;
 	}
+	/**
+	 * Get attribute number of level 
+	 * @return integer number of level
+	 * */
+	
 	public int getLevelint() {
 		return this.level;
 	}
+	/**
+	 * Get attribute passed 
+	 * @return true or false
+	 */
 	public boolean getPassed() {
 		return this.passed;
 	}
+	/**
+	 * Get attribute board 
+	 * @return Class Object Level
+	 */
 	public Level getLevelObj() {
 		return this.board;
 	}
+	/**
+	 * Get attribute game over 
+	 * @return true or false if the game ends
+	 */
 	public boolean getGameOver() {
 		return this.gameover;
 	}
+	/**
+	 * Get attribute guard 
+	 * @return Class Object Guard
+	 */
 	public Guard getGuard() {
 		return this.guard;
 	} 
+	/**
+	 * Get attribute crazyOgre 
+	 * @return Class Objet Ogre
+	 */
 	public Ogre getCrazyOgre() {
 		return this.crazyOgre;
 	}
+	/**
+	 * Set attribute crazyOgre 
+	 * @param  Class Object Ogre
+	 */
 	public void setCrazyOgre(Ogre m) {
 		this.crazyOgre  = m;
 	}	
+	/**
+	 * Set attribute board. Creates a new object Level with a map
+	 * @param map of the game for a level
+	 */
 	public void setLevel(char[][] lvl) {
 		 this.board = new Level(lvl);
 	}
+	/**
+	 * Set attribute level. Selects the object Level for a specific level 
+	 * In with level, updates hero a board attributes 
+	 */
 	public void setLevel() {
 		switch (this.level) {
 		case 4:
@@ -122,6 +166,11 @@ public class Game {
 			break;
 		}
 	}
+	/**
+	 * Get attribute game over 
+	 * @return true or false if the game ends
+	 */
+	
 	public void setLevelObjec(Level toty) {
 		this.board = toty;
 	}
