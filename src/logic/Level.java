@@ -20,7 +20,7 @@ public class Level {
 			this.map = mapaToUse;
 			
 		}
-		if(numb == 2) {
+		else if(numb == 2) {
 			char [][] mapaToUse = { 
 					{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
 					{ 'I', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'k', 'X' }, 
@@ -35,7 +35,7 @@ public class Level {
 			this.map = mapaToUse;
 
 		}
-		if(numb == 3) { //varios guardas
+		else if(numb == 3) { //varios guardas
 			char [][] mapaToUse =  { 
 					{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
 					{ 'X', ' ', ' ', ' ', 'I', ' ', 'X', ' ', ' ', 'X' }, 
@@ -50,7 +50,7 @@ public class Level {
 			this.map = mapaToUse;
 	
 		}
-		if(numb == 4) { //varios Ogres
+		else if(numb == 4) { //varios Ogres
 			char [][] mapaToUse = { 
 					{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
 					{ 'I', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'k', 'X' }, 
@@ -64,6 +64,9 @@ public class Level {
 					{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' }, };
 			this.map = mapaToUse;
 	
+		}
+		else { 
+			throw new IllegalArgumentException();
 		}
 		this.isDoorsOpen =false;
 	}
