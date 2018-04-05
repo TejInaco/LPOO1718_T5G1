@@ -167,26 +167,45 @@ public class Game {
 		}
 	}
 	/**
-	 * Get attribute game over 
-	 * @return true or false if the game ends
+	 * Set attribute board 
+	 * @param Class Object Level
 	 */
-	
 	public void setLevelObjec(Level toty) {
 		this.board = toty;
 	}
+	/**
+	 * Set attribute level with level number
+	 * @param number of level
+	 */
 	public void setLevelInt(int nmb) {
 		this.level = nmb;
 	}
+	/**
+	 * Set attribute guard
+	 * @param Class Object Guard
+	 */
 	public void setGuard(Guard grd) {
 		this.guard = grd;
 	}
+	/**
+	 * Set attribute Hero
+	 * @param Class Object Hero
+	 */
 	public void setHero(Hero heroi) {
 		this.hero = heroi;
 	}
+	/**
+	 * Set attribute gameover
+	 * @param true or flase
+	 */
 	public void setGameOver(boolean bln) {
 		this.gameover = bln;
 		
 	}
+	/**
+	 * Set attribute guard
+	 * Depending on the level creates a random number that will implement the TypeGuard
+	 */
 	public void setGuard() {
 		
 		Random rand = new Random();
@@ -197,6 +216,10 @@ public class Game {
 		}
 		this.defineTypeGuard(random);
 	}
+	/**
+	 * Set attribute guard with a Class Object Guard
+	 * @param random number that will selected the GuardType 
+	 */
 	public void defineTypeGuard(int number_selected) {
 		switch (number_selected) {
 		case 0:
@@ -213,7 +236,10 @@ public class Game {
 		}
 	}
 	
-	// TENTAR COLOCAR EM OGRE
+	/**
+	 * Set attribute array of ogres
+	 * Creates a random number that will translate into the number of Ogres in the map
+	 */
 	public void setOgre() {
 
 		Random rand = new Random();
@@ -227,7 +253,10 @@ public class Game {
 			ogres[k] = ogre;
 		}
 	}
-
+	/**
+	 * Move in the map the existent Guard or Ogre
+	 * @param Class Object BoardObject
+	 */
 	public void move(BoardObject foe) {
 
 		if (foe instanceof Guard)
@@ -267,7 +296,10 @@ public class Game {
 			}
 		}
 	}
-
+	/**
+	 * Determines the next position of the club, when Ogre throws it
+	 * @param Class Object Ogre
+	 */
 	public void castClub(Ogre ogre) {
 
 		while (true) {
@@ -300,7 +332,10 @@ public class Game {
 			}
 		}
 	}
-
+	/**
+	 * Function responsible for the hero movement
+	 * @param Recipes the number input by the keyboard numbers
+	 */
 	public void move(int dir) {
 		int newLine = hero.getLine();
 		int newCol = hero.getCol();
@@ -327,7 +362,9 @@ public class Game {
 		this.validateRules();
 
 	}
-
+	/**
+	 * Fuction who selects the rules for with level depending on the level the game is on
+	 */
 	public void validateRules() {
 
 		if (this.level == 1) {  //heroi e um guarda apenas
@@ -344,7 +381,9 @@ public class Game {
 		}
 		this.checkLevel();
 	}
-	
+	/**
+	 * Verifies guard behavior and game conditions in level 1
+	 */
 	public void validateRulesLevel1() {
 		this.getGuard().move();
 
@@ -358,7 +397,9 @@ public class Game {
 			this.passed = true;
 		
 	}
-	
+	/**
+	 * Verifies behavior and game conditions in level 2
+	 */
 	public void validateRulesLevel2() {
 		move(this.getCrazyOgre());
 		castClub(this.getCrazyOgre());
@@ -399,7 +440,10 @@ public class Game {
 			this.passed = true;
 		
 }
-
+	/**
+	 * Verifies behavior and game conditions in level 3
+	 */
+	
 	public void validateRulesLevel3(){
 		this.guard.move();
 
@@ -418,7 +462,9 @@ public class Game {
 			this.passed = true;
 		
 	}
-	
+	/**
+	 * Verifies behavior and game conditions in level 4
+	 */
 	public void validateRulesLevel4() {
 		for (int i = 0; i < ogres.length; i++) {
 			if (!ogres[i].getStun())
