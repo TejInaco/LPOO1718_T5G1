@@ -57,15 +57,29 @@ public class Guard extends BoardObject {
 		super(line, col, 'G');
 		Type = type;
 	}
+	/**
+	 * Get attribute Type
+	 * @return enum struct type
+	 */
 	public GuardType getType() {
 		return Type;
 	}
+	/**
+	 * Get attribute inverted
+	 * @return true or false if the route is inverted or not
+	 */
 	public boolean getInverted() {
 		return this.inverted;
 	}
+	/**
+	 * Set attribute inverted
+	 */
 	public void setInverted(boolean ft) {
 		 this.inverted = ft;
 	}
+	/**
+	 * Apply rules for the behavior and movement of which type of Guard
+	 */
 	public void move() {
 		switch (Type) {
 
@@ -109,7 +123,9 @@ public class Guard extends BoardObject {
 			break;
 		}
 	}
-
+	/**
+	 * Moves Guard in a defined route
+	 */
 	public void route() {
 		int newlin = this.line;
 		int newcol = this.col;
@@ -183,7 +199,11 @@ public class Guard extends BoardObject {
 		this.line = newlin;
 
 	}
-
+	/**
+	 * Defines rules for the collision between Guard and Hero
+	 * @param lin - hero line
+	 * @param col - hero column
+	 */
 	public boolean collision(int lin, int col) {
 
 		if (this.getSymbol() == 'G') {// está acordado
@@ -234,6 +254,5 @@ public class Guard extends BoardObject {
 		return false;
 	}
 
-	
 
 }
