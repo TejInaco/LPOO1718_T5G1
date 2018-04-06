@@ -29,6 +29,7 @@ public class Game {
 		this.level = 4;
 		this.hero = new Hero(1, 1);
 		this.crazyOgre = new Ogre();
+	
 	}
 	/**
 	 * Class Game Constructor 
