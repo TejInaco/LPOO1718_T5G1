@@ -22,11 +22,15 @@ __DONE__ PIT tool results: 61 %
 
 Print Screen file: mutationCoverage.png
 
+![mutationCoverage](mutationCoverage.png)
+
 ### [C]  
 
 __DONE__ BetterCodeHub: Status badge 7 of 10
 
 Print Screen file: codeAvaluation.png
+
+![codeAvaluation](codeAvaluation.png)
 
 ### [D] 
 
