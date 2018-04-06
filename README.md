@@ -10,7 +10,10 @@ Guidelines for the delivery:
 
 [C]  __DONE__ BetterCodeHub: Status badge 7 of 10
 
+Print Screen file: codeAvaluation.png
+
 [D]  __DONE__ Added the picture with the BetterCodeHub indicator
+     
      __DONE__ Logic package API Documentation with Javadoc uploaded to github
      Follow Documentation link:
      
