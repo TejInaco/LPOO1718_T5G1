@@ -167,6 +167,23 @@ public class Game {
 			break;
 		}
 	}
+	
+	/**
+	 * Get the current level board map 
+	 * 
+	 */
+	public String getMapping() {
+		return this.mapping;
+	}
+	
+	/**
+	 * Set the board map 
+	 * @param String representing the new map
+	 */
+	public void setMapping(String mapa) {
+		this.mapping = mapa;
+	}
+	
 	/**
 	 * Set attribute board 
 	 * @param Class Object Level
