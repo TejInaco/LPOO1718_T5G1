@@ -113,6 +113,7 @@ public class TestKeepLevelLogic {
 //	}
 	
 	
+	
 
 	
 //********************************************     Tests Predefinidos 			***********  
@@ -125,9 +126,10 @@ public class TestKeepLevelLogic {
 		jogo.setCrazyOgre(ogreMal);
 		jogo.getHero().setLine(1);
 		jogo.getHero().setCol(3);
-		jogo.validateRulesLevel2();
-		jogo.setCrazyOgre(ogreMal);
+		//jogo.validateRulesLevel2();
 		assertTrue( jogo.getCrazyOgre().collision(1, 3) );
+		
+		
 	}
 	@Test
 	public void testMoveToKeyAndKeyChangesRepresentation() {
@@ -184,6 +186,32 @@ public class TestKeepLevelLogic {
 		jogo.move(2);
 		jogo.move(4);
 		assertFalse(jogo.getPassed());
+	}
+	@Test
+	public void updateGametest() {
+		Game jogo = new Game();
+		jogo.getHero().setLine(2);
+		jogo.getHero().setCol(2);
+		Guard gtst  = new Guard(4,4, GuardType.SUSPICIOUS);
+		jogo.setGuard(gtst);
+		assertTrue( jogo.updateMapping(2, 2));
+		assertFalse(jogo.updateMapping(3, 3));
+		assertTrue( jogo.updateMapping(4, 4));
+		jogo.setLevelInt(4);
+		jogo.setOgre();
+		assertTrue( jogo.updateMapping(2, 1));
+		assertTrue(	jogo.updateMapping(3, 1));
+		assertTrue( jogo.updateMapping(4, 1));
+		assertTrue( jogo.updateMapping(6, 1));
+		assertTrue( jogo.updateMapping(5, 1));
+		
+		assertFalse( jogo.updateMapping(2, 3));
+		assertFalse( jogo.updateMapping(3, 3));
+		assertFalse( jogo.updateMapping(4, 3));
+		assertFalse( jogo.updateMapping(6, 3));
+		assertFalse( jogo.updateMapping(5, 3));
+		
+		
 	}
 	
 }

@@ -727,7 +727,7 @@ public class Game {
 
 		}
 
-		if ( this.getLevelint() == 2 && ogres.length != 0) {
+		if ( this.getLevelint() == 4 && ogres.length != 0) {
 
 			// ogre and club
 			for (int i = 0; i < ogres.length; i++) {

@@ -1,11 +1,11 @@
 package test;
-//import static org.junit.Assert.*;
+import static org.junit.Assert.*;
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertNotEquals;
+//import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import logic.*;
@@ -18,13 +18,13 @@ public class TestOgreRandomBeahviour {
 			{ 'X', ' ', ' ', 'O', 'X' },
 			{ 'X', 'H', ' ', ' ', 'X' }, 
 			{ 'X', 'X', 'X', 'X', 'X' } };
-
+	@Test
 	public void setRandomOgreTest() {
 		Game jogo = new Game();
 		jogo.setLevelInt(4);
 		jogo.setOgre();
 		assertEquals(3, jogo.getCrazyOgreArray().length );
-		Ogre grd = new Ogre();
+		//Ogre grd = new Ogre();
 		assertEquals( 2, jogo.getCrazyOgreArray()[0].getLine() );
 	// 1 Ogre	
 		assertEquals( 1, jogo.getCrazyOgreArray()[0].getCol() );
@@ -41,25 +41,17 @@ public class TestOgreRandomBeahviour {
 		assertEquals( 5, jogo.getCrazyOgreArray()[2].getClub().getLine() );
 		assertEquals( 1, jogo.getCrazyOgreArray()[2].getClub().getCol() );
 	}
-		
-//	@Test // tirar o club do construtor do Ogre(int lin, int col)
-//	public void testRandomBehaviour() {
-//		Game jogo = new Game();
-//		Level levelTest = new Level(mapTest);
-//		jogo.setLevel(mapTest);
-//		jogo.setLevelInt(2);
-//		Ogre ogreMal = new Ogre(2,2);
-//		jogo.setCrazyOgre(ogreMal);
-//		jogo.move(ogreMal);
-//		assertTrue( (ogreMal.getLine() != 2) || (ogreMal.getCol() != 2) );
-//		assertEquals(3, jogo.getCrazyOgre().getClub().getLine() );
-//		jogo.castClub(ogreMal);
-//		assertEquals(1, jogo.getCrazyOgre().getClub().getCol() );
-//		assertTrue( (ogreMal.getLine() != 3) || (ogreMal.getCol() != 1) );
-//	}
-	
+
+	@Test  
+	public void moveArrayogresTest() { 
+	    Game jogo = new Game(); 
+	    jogo.setLevelInt(4); 
+	    Ogre grd = new Ogre(2,2); 
+	    jogo.setLevel(mapTest); 
+	    jogo.moveArrayOgres(grd); 
+	    assertNotEquals( 1, grd.getLine() ); 
 	}
-	@Test 
+    @Test 
 	public void checkLevel() {
 		Game jogo = new Game();
 		jogo.setLevelInt(1);
@@ -87,6 +79,8 @@ public class TestOgreRandomBeahviour {
 		assertTrue( jogo.ended );
 	
 	}
+	
+	
 	
 	
 }
