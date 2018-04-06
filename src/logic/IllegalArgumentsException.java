@@ -1,9 +1,8 @@
-/**
- * 
- */
 package logic;
 
-
+/**
+ * Exceptions class
+ * */
 public class IllegalArgumentsException extends Exception {
 
 }

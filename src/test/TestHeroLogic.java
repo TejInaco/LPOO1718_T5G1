@@ -16,10 +16,7 @@ import logic.Guard.GuardType;
 //import logic.Level;
 import logic.Ogre;
 import logic.*;
-/**
- * @author notus
- *
- */
+
 public class TestHeroLogic {
 
 	protected char[][] mapTest = { 

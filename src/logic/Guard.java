@@ -2,50 +2,84 @@ package logic;
 
 import java.util.Random;
 
-//import logic.Guard.GuardType;
 
 public class Guard extends BoardObject {
+	
 	GuardType Type;
 	private boolean inverted = false;
 
 	public enum GuardType {
-
 		ROOKIE("G"), DRUNKEN("G"), SUSPICIOUS("G");
  
 		private String custom;
-
+		
+		/**
+		 * Set GuarType according with structure
+		 * @param custom string
+		 */
 		private GuardType(String custom) {
 			this.custom = custom;
 		}
+		/**
+		 * Get GuarType according with structure
+		 */
 		public String getCustomString() {
 			return custom;
 		}
 		
 	}
-
+	/**
+	 * Set Class Object Guard with a type of guard
+ 	 * @param lin -number line
+	 * @param col - column number
+	 * @param tipo - GuardType 
+	 * */
 	public void setGuard(int lin, int col,GuardType tipo) {
-		//Guard guard =
 		new Guard(lin, col, tipo);
 	}
-	
+	/**
+	 * Default constructor
+	 * @param nmb -number line
+	 * @param nmb1 - column number
+	 * @param g - symbol of the object can change between g or G
+	 */
 	public Guard(int nmb, int nmb1, char g) {
 		super(nmb, nmb1, g);
 		this.Type = GuardType.ROOKIE;
 	}
-	
+	/**
+	 * Constructor with a type of guard
+	 * @param line -number line
+	 * @param nmb1 - column number
+	 * @param type - GuardType
+	 */
 	public Guard(int line, int col, GuardType type) {
 		super(line, col, 'G');
 		Type = type;
 	}
+	/**
+	 * Get attribute Type
+	 * @return enum struct type
+	 */
 	public GuardType getType() {
 		return Type;
 	}
+	/**
+	 * Get attribute inverted
+	 * @return true or false if the route is inverted or not
+	 */
 	public boolean getInverted() {
 		return this.inverted;
 	}
+	/**
+	 * Set attribute inverted
+	 */
 	public void setInverted(boolean ft) {
 		 this.inverted = ft;
 	}
+	/**
+	 * Apply rules for the behavior and movement of which type of Guard
+	 */
 	public void move() {
 		switch (Type) {
 
@@ -89,7 +123,9 @@ public class Guard extends BoardObject {
 			break;
 		}
 	}
-
+	/**
+	 * Moves Guard in a defined route
+	 */
 	public void route() {
 		int newlin = this.line;
 		int newcol = this.col;
@@ -163,7 +199,11 @@ public class Guard extends BoardObject {
 		this.line = newlin;
 
 	}
-
+	/**
+	 * Defines rules for the collision between Guard and Hero
+	 * @param lin - hero line
+	 * @param col - hero column
+	 */
 	public boolean collision(int lin, int col) {
 
 		if (this.getSymbol() == 'G') {// está acordado
@@ -214,6 +254,5 @@ public class Guard extends BoardObject {
 		return false;
 	}
 
-	
 
 }
