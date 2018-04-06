@@ -4,30 +4,30 @@ Guided Project 2017/2018
 
 ## Guidelines for the delivery:
 
-# [A] 
 
-# [B]  
+### [A] 
+
+### [B]  
 
 __DONE__ 80% of the game logic code Eclmma 
 
 Print Screen file:
 
-# [C]  
+### [C]  
 
 __DONE__ BetterCodeHub: Status badge 7 of 10
 
 Print Screen file: codeAvaluation.png
 
-# [D] 
+### [D] 
 
 __DONE__ Added the picture with the BetterCodeHub indicator
  
 __DONE__ Logic package API Documentation with Javadoc uploaded to github
-     
-     
-     
-     Follow Documentation link:
-     
+
+Follow Documentation link:
+
+ 
      [GitHub Pages](https://tejinaco.github.io/LPOO1718_T5G1/)
 
 
