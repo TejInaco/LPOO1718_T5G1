@@ -26,9 +26,10 @@ public class Game {
 		this.gameover = false;
 		this.ended = false;
 		this.passed = false;
-		this.level = 1;
+		this.level = 4;
 		this.hero = new Hero(1, 1);
 		this.crazyOgre = new Ogre();
+	
 	}
 	/**
 	 * Class Game Constructor 
@@ -243,14 +244,19 @@ public class Game {
 	public void setOgre() {
 
 		Random rand = new Random();
-
+		int incre_line_ogre = 2;
 		int random = rand.nextInt(3);// creates up to 3 ogres
-
+		
+		random = 3;
+		
 		ogres = new Ogre[random + 1];// creates an array to hold the number of ogres randomly generated
 
 		for (int k = 0; k < ogres.length; k++) {// populates array with the number of ogres randomly generated
-			Ogre ogre = new Ogre();
+			
+			Ogre ogre = new Ogre(incre_line_ogre,1,incre_line_ogre-1,1);
 			ogres[k] = ogre;
+			incre_line_ogre++;
+			incre_line_ogre++;
 		}
 	}
 	/**
