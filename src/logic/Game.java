@@ -26,7 +26,7 @@ public class Game {
 		this.gameover = false;
 		this.ended = false;
 		this.passed = false;
-		this.level = 4;
+		this.level = 1;
 		this.hero = new Hero(1, 1);
 		this.crazyOgre = new Ogre();
 	
@@ -118,7 +118,14 @@ public class Game {
 	 */
 	public Guard getGuard() {
 		return this.guard;
-	} 
+	}
+	/**
+	 * Get attribute Ogres 
+	 * @return Class Objet Ogre
+	 */
+	public Ogre[] getCrazyOgreArray() {
+		return this.ogres;
+	}
 	/**
 	 * Get attribute crazyOgre 
 	 * @return Class Objet Ogre
@@ -148,8 +155,7 @@ public class Game {
 		switch (this.level) {
 		case 4:
 			this.board = new Level(4);
-			this.hero.setCol(1);
-			this.hero.setLine(1);
+			this.hero = new Hero(8,8);
 			break;
 		case 3:
 			this.board = new Level(3);
@@ -194,6 +200,13 @@ public class Game {
 	 */
 	public void setHero(Hero heroi) {
 		this.hero = heroi;
+	}
+	/**
+	 * Set attribute passed
+	 * @param boolean
+	 */
+	public void setPassed(boolean bln) {
+		this.passed = bln;
 	}
 	/**
 	 * Set attribute gameover
@@ -247,9 +260,9 @@ public class Game {
 		int incre_line_ogre = 2;
 		int random = rand.nextInt(3);// creates up to 3 ogres
 		
-		random = 3;
+		random = 2;
 		
-		ogres = new Ogre[random + 1];// creates an array to hold the number of ogres randomly generated
+		ogres = new Ogre[random+1];// creates an array to hold the number of ogres randomly generated
 
 		for (int k = 0; k < ogres.length; k++) {// populates array with the number of ogres randomly generated
 			
@@ -274,7 +287,7 @@ public class Game {
 
 				int newLine = this.crazyOgre.getLine();
 				int newCol = this.crazyOgre.getCol();
-
+				
 				Random random = new Random();
 
 				int dir = 2 * (1 + random.nextInt(4));
@@ -302,6 +315,41 @@ public class Game {
 			}
 		}
 	}
+	/**
+	 * Move the Class Objects Ogres inside of the array for Level 4
+	 * @param Array of Ogres
+	 */
+	public void moveArrayOgres(Ogre foe) {
+		while (true) {
+				int newLine = foe.getLine();
+				int newCol = foe.getCol();
+				
+				Random random = new Random();
+
+				int dir = 2 * (1 + random.nextInt(4));
+
+				switch (dir) {
+				case 8:
+					newLine++;
+					break;
+				case 6:
+					newLine--;
+					break;
+				case 2:
+					newCol++;
+					break;
+				case 4:
+					newCol--;
+					break;
+				}
+
+				if (board.isEmpty(newLine, newCol) && !board.foundDoor(newLine, newCol)) {
+					foe.setLine(newLine);
+					foe.setCol(newCol);
+					break;
+				}
+			}
+		}
 	/**
 	 * Determines the next position of the club, when Ogre throws it
 	 * @param Class Object Ogre
@@ -334,6 +382,43 @@ public class Game {
 			
 			if (board.isEmpty(newLine, newCol)) {
 				this.getCrazyOgre().setClub(newLine, newCol);
+				break;
+			}
+		}
+	}
+	/**
+	 * For Ogres array
+	 * Determines the next position of the club, when Ogre throws it
+	 * @param Class Object Ogre
+	 */
+	public void castClubArray(Ogre ogre) {
+
+		while (true) {
+
+			int newLine = ogre.getLine();
+			int newCol = ogre.getCol();
+			
+			Random random = new Random();
+
+			int dir = 2 * (1 + random.nextInt(4));
+			
+			switch (dir) {
+				case 8:
+					newLine++;
+					break;
+				case 6:
+					newLine--;
+					break;
+				case 2:
+					newCol++;
+					break;
+				case 4:
+					newCol--;
+					break;
+			}
+			
+			if (board.isEmpty(newLine, newCol)) {
+				ogre.setClub(newLine, newCol);
 				break;
 			}
 		}
@@ -385,7 +470,7 @@ public class Game {
 		if (this.level == 4) {//heroi e muitos Ogres
 			validateRulesLevel4();
 		}
-		this.checkLevel();
+		//this.checkLevel();
 	}
 	/**
 	 * Verifies guard behavior and game conditions in level 1
@@ -472,18 +557,20 @@ public class Game {
 	 * Verifies Ogres and Club behavior and game conditions in level 4
 	 */
 	public void validateRulesLevel4() {
-		for (int i = 0; i < ogres.length; i++) {
-			if (!ogres[i].getStun())
-				move(ogres[i]);
-			else
-				ogres[i].incStunCounter();
-
-			castClub(ogres[i]);
+		for (int i = 0; i < this.ogres.length; i++) {
+			
+			if (!this.ogres[i].getStun()) {
+				this.moveArrayOgres(ogres[i]);
+				this.castClubArray( ogres[i] );
+			}
+			else {
+				this.ogres[i].incStunCounter();
+			}
 		}
 
-		if (board.gotKey(hero.getLine(), hero.getCol())) {
-			board.openDoors();
-			hero.setSymbol('K');
+		if (this.board.gotKey(this.hero.getLine(), this.hero.getCol())) {
+			this.board.openDoors();
+			this.hero.setSymbol('K');
 		}
 
 		for (int i = 0; i < ogres.length; i++) {
@@ -509,7 +596,7 @@ public class Game {
 		}
 
 		if (this.board.foundDoor(this.hero.getLine(), this.hero.getCol()))
-			this.passed = true;
+			this.ended = true;
 	}
 
 	/**
@@ -566,17 +653,19 @@ public class Game {
 	 */
 	public void checkLevel() {
 		if( this.passed && this.level == 4) {
-			this.display();
+			this.ended = true;
+			this.gameover = true;
+			//this.display();
 		}
-		if(this.gameover) {
-			this.display();
-		}
+//		if(this.gameover) {
+//			this.display();
+//		}
 		if (this.passed) {
 			//this.ended = true;
 			this.level++;
 			this.setLevel();
 			this.passed = false;
-			this.print();
+			//this.print();
 			}
 	}
 	/**
@@ -591,7 +680,6 @@ public class Game {
 		else if (this.gameover) {
 			System.out.print("GAME OVER\n");		
 		}
-		//checkLevel();
 	}
 	/**
 	 * Function that prints the current map
@@ -607,7 +695,7 @@ public class Game {
 		}
 	}
 	/**
-	 * 
+	 * Imprime a disposicao actual do board na area de texto
 	 */
 	public void showGame() {
 		mapping = "";
@@ -620,7 +708,7 @@ public class Game {
 		}
 	}
 	/**
-	 * 
+	 * Actualiza a string passada para a area de texto da janela
 	 * @param lin - line number
 	 * @param col - column number
 	 */

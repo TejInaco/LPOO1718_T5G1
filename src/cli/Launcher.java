@@ -30,10 +30,13 @@ public class Launcher {
 			int escolha = s.nextInt();
 
 			game.move(escolha);
-		
+			game.checkLevel();
+			if(game.gameover) {
+				game.display();
+			}
 			
 		}
-		//game.display();
+		
 		s.close();
 		return;
 	}
