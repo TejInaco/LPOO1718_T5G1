@@ -33,7 +33,7 @@ public class TestOgreRandomBeahviour {
 //		assertTrue( (ogreMal.getLine() != 3) || (ogreMal.getCol() != 1) );
 //	}
 
-	
+	 
 	
 	
 	
