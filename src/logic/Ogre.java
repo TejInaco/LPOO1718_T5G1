@@ -13,6 +13,10 @@ public class Ogre extends BoardObject {
 		super(4, 1, 'O');
 		this.club = new Club(3,1); 
 	}
+	public Ogre(int lnh, int cln, int cubline, int cubcol) {
+		super(lnh,cln);
+		this.club = new Club(cubline,cubcol);
+	}
 	/**
 	 * Constructor
 	 * @param line number
