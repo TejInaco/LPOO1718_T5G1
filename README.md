@@ -9,8 +9,11 @@ Guided Project 2017/2018
 
 ### [B]  
 
-__DONE__ 80% of the game logic code Eclmma 
+__DONE__ 82,5 % of the game logic code Eclmma 
 
+Print Screen file: converageJunit.png
+
+PIT tool results: 56 %
 Print Screen file:
 
 ### [C]  
