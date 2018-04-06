@@ -19,7 +19,7 @@ public class TestLevelOne {
 			{'X','X','X','X','X','X'},
 		};
 	
- 	
+ 	 
 	@Test
 	public void doorsAndKey() {
 		Game jogo = new Game();
@@ -70,16 +70,15 @@ public class TestLevelOne {
 	}
 
 	
-	@Test // tirar o club do construtor do Ogre(int lin, int col)
+	@Test 
 	public void testGuardCollisionGameOver() {
 		Game jogo = new Game();
 		jogo.setLevel(mapTest);
 		Guard grd = new Guard(4,1, GuardType.ROOKIE);
 		jogo.setGuard(grd);
 		assertFalse( ! (  jogo.getGuard().collision(jogo.getHero().getLine(), jogo.getHero().getCol() )  ) && ( jogo.getGameOver() ) );
-//	if (this.guard.collision(this.hero.getLine(), this.hero.getCol()))
-//		this.setGameOver(true);
-//	
+		assertTrue( ! (  jogo.getGuard().collision(jogo.getHero().getLine(), jogo.getHero().getCol() )  ) && !( jogo.getGameOver() ) );
+		
 	}
 	
 	
