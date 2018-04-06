@@ -59,10 +59,31 @@ public class TestLevelOne {
 		assertFalse(!(jogo.board.gotKey(jogo.getHero().getLine(), jogo.getHero().getCol())) && !(jogo.board.getisDoorsOpen())); 
 		assertFalse(jogo.board.gotKey(jogo.getHero().getLine(), jogo.getHero().getCol()) && !(jogo.board.getisDoorsOpen())); 
 		assertFalse(!(jogo.board.gotKey(jogo.getHero().getLine(), jogo.getHero().getCol())) && jogo.board.getisDoorsOpen());
+	
+		assertTrue( ((jogo.board.gotKey(jogo.getHero().getLine(), jogo.getHero().getCol())) && (jogo.board.getisDoorsOpen() )) ||  ( (!(jogo.board.gotKey(jogo.getHero().getLine(), jogo.getHero().getCol())) && !(jogo.board.getisDoorsOpen() )) )) ;
+		assertFalse( ((jogo.board.gotKey(jogo.getHero().getLine(), jogo.getHero().getCol())) && (jogo.board.getisDoorsOpen() )) &&  ( (!(jogo.board.gotKey(jogo.getHero().getLine(), jogo.getHero().getCol())) && !(jogo.board.getisDoorsOpen() )) )) ;
+		assertTrue( ((jogo.getGuard().collision(jogo.getHero().getLine(), jogo.getHero().getCol())) && (jogo.getGameOver() ))  ||  ( (!((jogo.getGuard().collision(jogo.getHero().getLine(), jogo.getHero().getCol())) && !(jogo.getGameOver() ))) ));
+		assertFalse( ((jogo.getGuard().collision(jogo.getHero().getLine(), jogo.getHero().getCol())) && (jogo.getGameOver() )) &&  ( (!((jogo.getGuard().collision(jogo.getHero().getLine(), jogo.getHero().getCol())) && !(jogo.getGameOver() ))) ));
+	
+		//lns 289 e 292 do Game (negated conditional)		
+		assertFalse(!(jogo.board.gotKey(jogo.getHero().getLine(), jogo.getHero().getCol())) && (jogo.board.getisDoorsOpen())); 
+		assertFalse( !(jogo.getGuard().collision(jogo.getHero().getLine(), jogo.getHero().getCol())) && (jogo.getGameOver() ));
 	}
 
 	
+	@Test // tirar o club do construtor do Ogre(int lin, int col)
+	public void testGuardCollisionGameOver() {
+		Game jogo = new Game();
+		jogo.setLevel(mapTest);
+		Guard grd = new Guard(4,1, GuardType.ROOKIE);
+		jogo.setGuard(grd);
+		assertFalse( ! (  jogo.getGuard().collision(jogo.getHero().getLine(), jogo.getHero().getCol() )  ) && ( jogo.getGameOver() ) );
+//	if (this.guard.collision(this.hero.getLine(), this.hero.getCol()))
+//		this.setGameOver(true);
+//	
+	}
 	
 	
-	
+
+
 }
