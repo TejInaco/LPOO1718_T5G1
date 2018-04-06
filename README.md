@@ -12,10 +12,9 @@ Guidelines for the delivery:
 
 [D]  __DONE__ Added the picture with the BetterCodeHub indicator
      __DONE__ Logic package API Documentation with Javadoc uploaded to github
-     
      Follow link:
      
-     https://tejinaco.github.io/LPOO1718_T5G1/
+     <a href="https://tejinaco.github.io/LPOO1718_T5G1/">https://tejinaco.github.io/LPOO1718_T5G1/</a>
 
 
 TODO:
