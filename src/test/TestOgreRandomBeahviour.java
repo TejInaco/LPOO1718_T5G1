@@ -2,11 +2,6 @@ package test;
 import static org.junit.Assert.*;
 
 
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertFalse;
-//import static org.junit.Assert.assertNotEquals;
-//import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 import logic.*;
 
@@ -24,7 +19,7 @@ public class TestOgreRandomBeahviour {
 		jogo.setLevelInt(4);
 		jogo.setOgre();
 		assertEquals(3, jogo.getCrazyOgreArray().length );
-		//Ogre grd = new Ogre();
+		
 		assertEquals( 2, jogo.getCrazyOgreArray()[0].getLine() );
 	// 1 Ogre	
 		assertEquals( 1, jogo.getCrazyOgreArray()[0].getCol() );

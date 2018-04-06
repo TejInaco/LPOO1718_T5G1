@@ -470,7 +470,6 @@ public class Game {
 		if (this.level == 4) {//heroi e muitos Ogres
 			validateRulesLevel4();
 		}
-		//this.checkLevel();
 	}
 	/**
 	 * Verifies guard behavior and game conditions in level 1
@@ -655,17 +654,12 @@ public class Game {
 		if( this.passed && this.level == 4) {
 			this.ended = true;
 			this.gameover = true;
-			//this.display();
+			
 		}
-//		if(this.gameover) {
-//			this.display();
-//		}
 		if (this.passed) {
-			//this.ended = true;
 			this.level++;
 			this.setLevel();
 			this.passed = false;
-			//this.print();
 			}
 	}
 	/**
