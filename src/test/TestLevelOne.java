@@ -19,8 +19,7 @@ public class TestLevelOne {
 			{'X','X','X','X','X','X'},
 		};
 	
-
-	
+ 	
 	@Test
 	public void doorsAndKey() {
 		Game jogo = new Game();
