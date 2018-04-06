@@ -15,6 +15,9 @@ __DONE__ 82,5 % of the game logic code Eclmma
 
 Print Screen file: converageJunit.png
 
+![converageJunit](converageJunit.png)
+
+
 __DONE__ PIT tool results: 61 %
 
 Print Screen file: mutationCoverage.png
