@@ -4,7 +4,7 @@ package gui;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class GraphicsPanel extends JPanel implements MouseListener, MouseMotionListener, KeyListener {
+public class GraphicsPanel extends JPanel implements MouseListener, MouseMotionListener, KeyListener , ActionListener {
 	private int x1 = 0, y1 = 0, x2 = 0, y2 = 0;
 
 	/**
@@ -14,6 +14,12 @@ public class GraphicsPanel extends JPanel implements MouseListener, MouseMotionL
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		addKeyListener(this);
+		//MyMouseAdapter mouseAdapter = new MyMouseAdapter();
+	//	addMouseListener(mouseAdapter);
+		//addMouseMotionListener(mouseAdapter);
+		//addKeyListener(new MyKeyboardAdapter());
+		setFocusable(true);
+setDoubleBuffered(true);
 	}
 
 
@@ -109,6 +115,13 @@ public class GraphicsPanel extends JPanel implements MouseListener, MouseMotionL
 
 	public void repaint(GameWindow gameWindow) {
 
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
