@@ -31,7 +31,7 @@ __DONE__ Logic package API Documentation with Javadoc uploaded to github
 Follow Documentation link:
 
  
-     [GitHub Pages](https://tejinaco.github.io/LPOO1718_T5G1/)
+     https://tejinaco.github.io/LPOO1718_T5G1/
 
 
 TODO:
